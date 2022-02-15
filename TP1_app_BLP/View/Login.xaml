@@ -1,0 +1,25 @@
+﻿<Window x:Class="TP1_app_BLP.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TP1_app_BLP"
+        mc:Ignorable="d"
+        Title="Connexion" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Content="Médecin :" HorizontalAlignment="Right"/>
+        <ComboBox Grid.Column="1" Grid.Row="0" Width="200" Name="DoctorsComboBox" HorizontalContentAlignment="Left" IsReadOnly="True" ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoctor}"/>
+        <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="ConnexionButton" Content="Se connecter" Click="Button_Click" IsDefault="True"/>
+        <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Name="CreateAccountButton" Content="Créer un compte..."/>
+    </Grid>
+</Window>
