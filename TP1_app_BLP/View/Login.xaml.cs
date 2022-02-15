@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TP1_app_BLP
+namespace TP01_HeartDiseaseDiagnostic
 {
     public partial class Login : Window
     {
