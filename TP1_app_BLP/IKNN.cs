@@ -14,8 +14,8 @@ namespace TP01_HeartDiseaseDiagnostic
 
 
         /* utils */
-        private double EuclideanDistance(HeartDiagnostic s1, HeartDiagnostic s2)
-        {   
+        private static double EuclideanDistance(HeartDiagnostic s1, HeartDiagnostic s2)
+        {
             double NormalizedChestPain = s1.NormalizedChestPain - s2.NormalizedChestPain;
             double NormalizedThalassemia = s1.NormalizedThalassemia - s2.NormalizedThalassemia;
             double NormalizedOldPeak = s1.NormalizedOldPeak - s2.NormalizedOldPeak;
@@ -28,7 +28,8 @@ namespace TP01_HeartDiseaseDiagnostic
 
             return Math.Sqrt(NormalizedChestPain + NormalizedThalassemia + NormalizedOldPeak + NormalizedFluoroscopy);
         }
-        private double ManhattanDistance(HeartDiagnostic s1, HeartDiagnostic s2) {
+        private static double ManhattanDistance(HeartDiagnostic s1, HeartDiagnostic s2)
+        {
             double NormalizedChestPain = Math.Abs(s1.NormalizedChestPain - s2.NormalizedChestPain);
             double NormalizedThalassemia = Math.Abs(s1.NormalizedThalassemia - s2.NormalizedThalassemia);
             double NormalizedOldPeak = Math.Abs(s1.NormalizedOldPeak - s2.NormalizedOldPeak);
@@ -36,7 +37,22 @@ namespace TP01_HeartDiseaseDiagnostic
 
             return Math.Sqrt(NormalizedChestPain + NormalizedThalassemia + NormalizedOldPeak + NormalizedFluoroscopy);
         }
-        //int Vote(List<int> sorted_labels);
+        private static int Vote(List<int> sorted_labels)
+        {
+            var labelTally = new Dictionary<int, uint>();
+            foreach (var label in sorted_labels)
+            {
+                if (labelTally.ContainsKey(label))
+                {
+                    labelTally[label]++;
+                }
+                else
+                {
+                    labelTally[label] = 0;
+                }
+            }
+            return labelTally.Aggregate((l1, l2) => l1.Value > l2.Value ? l1 : l2).Key;
+        }
         //List<int> ShellSort(List<float> distances, List<int> labels);
     }
 }
