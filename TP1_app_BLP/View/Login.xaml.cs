@@ -30,7 +30,6 @@ namespace TP01_HeartDiseaseDiagnostic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }
