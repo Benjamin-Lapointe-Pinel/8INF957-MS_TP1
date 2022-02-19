@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,14 @@ namespace TP01_HeartDiseaseDiagnostic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string trainingFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Data_HeartDiseaseDiagnostic", "train.csv");
+            string testFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Data_HeartDiseaseDiagnostic", "test.csv");
+            
+            KNN knn = new KNN();
+            knn.Train(trainingFile);
+
+            float success = knn.Evaluate(testFile);
+            Console.WriteLine(success);
         }
     }
 }

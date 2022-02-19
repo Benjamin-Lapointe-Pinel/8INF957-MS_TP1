@@ -1,15 +1,22 @@
-﻿namespace TP01_HeartDiseaseDiagnostic
+﻿using CsvHelper.Configuration.Attributes;
+
+namespace TP01_HeartDiseaseDiagnostic
 {
     public class HeartDiagnostic
     {
-        public uint ChestPain { get; private set; }
+        [Name("cp")]
+        public double ChestPain { get; set; }
         public double NormalizedChestPain => ChestPain / 3.0;
-        public uint Thalassemia { get; private set; }
+        [Name("thal")]
+        public double Thalassemia { get; set; }
         public double NormalizedThalassemia => (Thalassemia - 1) / 2.0;
-        public float OldPeak { get; private set; }
+        [Name("oldpeak")]
+        public double OldPeak { get; set; }
         public double NormalizedOldPeak => OldPeak / 6.2;
-        public uint Fluoroscopy { get; private set; }
+        [Name("ca")]
+        public double Fluoroscopy { get; set; }
         public double NormalizedFluoroscopy => Fluoroscopy / 3.0;
-        public uint Diagnostic { get; private set; }
+        [Name("target")]
+        public double Diagnostic { get; set; }
     }
 }
