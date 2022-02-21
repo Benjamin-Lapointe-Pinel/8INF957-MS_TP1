@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TP1_app_BLP.Model;
 
 namespace TP01_HeartDiseaseDiagnostic
 {

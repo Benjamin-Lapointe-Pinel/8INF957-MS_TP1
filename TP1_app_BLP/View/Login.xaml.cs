@@ -34,7 +34,7 @@ namespace TP01_HeartDiseaseDiagnostic
             string trainingFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Data_HeartDiseaseDiagnostic", "train.csv");
             string testFile = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Data_HeartDiseaseDiagnostic", "test.csv");
             
-            KNN knn = new KNN();
+            KNN knn = new();
             knn.Train(trainingFile);
 
             float success = knn.Evaluate(testFile);

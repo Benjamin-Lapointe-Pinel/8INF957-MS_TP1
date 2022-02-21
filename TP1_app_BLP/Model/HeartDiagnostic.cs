@@ -1,22 +1,47 @@
-﻿using CsvHelper.Configuration.Attributes;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CsvHelper.Configuration.Attributes;
+using TP01_HeartDiseaseDiagnostic;
 
-namespace TP01_HeartDiseaseDiagnostic
+namespace TP1_app_BLP.Model
 {
-    public class HeartDiagnostic
+    public class HeartDiagnostic : IDiagnostic
     {
-        [Name("cp")]
-        public double ChestPain { get; set; }
-        public double NormalizedChestPain => ChestPain / 3.0;
-        [Name("thal")]
-        public double Thalassemia { get; set; }
-        public double NormalizedThalassemia => (Thalassemia - 1) / 2.0;
-        [Name("oldpeak")]
-        public double OldPeak { get; set; }
-        public double NormalizedOldPeak => OldPeak / 6.2;
-        [Name("ca")]
-        public double Fluoroscopy { get; set; }
-        public double NormalizedFluoroscopy => Fluoroscopy / 3.0;
-        [Name("target")]
-        public double Diagnostic { get; set; }
+        public HeartDiagnostic(
+            [Name("cp")] float chestPain,
+            [Name("thal")] float thalassemia,
+            [Name("oldpeak")] float oldPeak,
+            [Name("ca")] float fluoroscopy,
+            [Name("target")] float diagnostic)
+        {
+            Features = new float[4];
+            Features[0] = chestPain;
+            Features[1] = thalassemia;
+            Features[2] = oldPeak;
+            Features[3] = fluoroscopy;
+
+            Label = diagnostic == 1;
+        }
+
+        public float[] Features { get; private set; }
+
+        public bool Label { get; private set; }
+
+        public void PrintInfo()
+        {
+            Console.Write(ToString());
+        }
+
+        public override string ToString()
+        {
+            return $"chest pain : {Features[0]}, " +
+                $"thalassemia : {Features[1]}, " +
+                $"old peak : {Features[2]}, " +
+                $"fluoroscopy : {Features[3]}, " +
+                $"diagnostic : {Label}";
+        }
     }
 }
