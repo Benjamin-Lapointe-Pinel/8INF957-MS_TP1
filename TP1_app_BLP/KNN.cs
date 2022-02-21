@@ -13,31 +13,32 @@ namespace TP01_HeartDiseaseDiagnostic
 {
     public class KNN : IKNN
     {
-        private List<HeartDiagnostic> heartDiagnostics;
-        private int k;
-        private Func<HeartDiagnostic, HeartDiagnostic, float> distanceFunction;
 
-        public void Train(string filename_train_set_csv, int k = 6, string distance = "euclidean")
+        private List<Diagnostic> heartDiagnostics;
+        private int k;
+        private Func<Diagnostic, Diagnostic, float> distanceFunction;
+
+        public void Train(string filename_train_set_csv, int k = 6, int distance = 1)
         {
             this.k = k;
 
             this.distanceFunction = distance switch
             {
-                "manhattan" => ManhattanDistance,
-                "euclidean" => EuclideanDistance,
+                0 => ManhattanDistance,
+                1 => EuclideanDistance,
                 _ => throw new ArgumentException("invalid distance choice"),
             };
 
-            this.heartDiagnostics = heartDiagnosticsFromCsv(filename_train_set_csv);
+            this.heartDiagnostics = ImportSamples(filename_train_set_csv);
         }
 
         public float Evaluate(string filename_test_set_csv)
         {
-            List<HeartDiagnostic> tests = heartDiagnosticsFromCsv(filename_test_set_csv);
+            List<Diagnostic> tests = ImportSamples(filename_test_set_csv);
             float success = 0;
-            foreach (HeartDiagnostic heartDiagnostic in tests)
+            foreach (Diagnostic heartDiagnostic in tests)
             {
-                if ((Predict(heartDiagnostic) == 1) == heartDiagnostic.Label)
+                if (Predict(heartDiagnostic) == heartDiagnostic.Label)
                 {
                     success++;
                 }
@@ -45,25 +46,26 @@ namespace TP01_HeartDiseaseDiagnostic
             return success / tests.Count;
         }
 
-        public int Predict(HeartDiagnostic sample)
+        public bool Predict(Diagnostic sample)
         {
             List<float> distances = heartDiagnostics.Select(hd => distanceFunction(hd, sample)).ToList();
-            List<int> labels = heartDiagnostics.Select(hd => hd.Label ? 1 : 0).ToList();
+            List<bool> labels = heartDiagnostics.Select(hd => hd.Label).ToList();
+            ShellSort(distances, labels);
 
-            return Vote(ShellSort(distances, labels));
+            return Vote(labels.Take(k).ToList());
         }
 
-        private static List<HeartDiagnostic> heartDiagnosticsFromCsv(string filepath)
+        public List<Diagnostic> ImportSamples(string filepath)
         {
             using var streamreader = new StreamReader(filepath);
             using var csv = new CsvReader(streamreader, new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 NewLine = Environment.NewLine
             });
-            return csv.GetRecords<HeartDiagnostic>().ToList();
+            return csv.GetRecords<Diagnostic>().ToList();
         }
 
-        public float ManhattanDistance(HeartDiagnostic s1, HeartDiagnostic s2)
+        public float ManhattanDistance(Diagnostic s1, Diagnostic s2)
         {
             float total = 0;
             for (int i = 0; i < s1.Features.Length; i++)
@@ -73,7 +75,7 @@ namespace TP01_HeartDiseaseDiagnostic
             return total;
         }
 
-        public float EuclideanDistance(HeartDiagnostic s1, HeartDiagnostic s2)
+        public float EuclideanDistance(Diagnostic s1, Diagnostic s2)
         {
             float total = 0;
             for (int i = 0; i < s1.Features.Length; i++)
@@ -83,28 +85,40 @@ namespace TP01_HeartDiseaseDiagnostic
             return MathF.Sqrt(total);
         }
 
-        public int Vote(List<int> sorted_labels)
+        public bool Vote(List<bool> sorted_labels)
         {
-            var labelTally = new Dictionary<int, uint>();
-            foreach (var label in sorted_labels.Take(k))
+            uint truesTally = 0;
+            uint falsesTally = 0;
+            foreach (var label in sorted_labels)
             {
-                if (labelTally.ContainsKey(label))
+                if (label)
                 {
-                    labelTally[label]++;
+                    truesTally++;
                 }
                 else
                 {
-                    labelTally[label] = 0;
+                    falsesTally++;
                 }
             }
-            return labelTally.Aggregate((l1, l2) => l1.Value > l2.Value ? l1 : l2).Key;
+            return truesTally > falsesTally;
         }
 
-        public List<int> ShellSort(List<float> distances, List<int> labels)
+        public void ShellSort(List<float> distances, List<bool> labels)
         {
             var labelsArray = labels.ToArray();
-            Array.Sort(distances.ToArray(), labelsArray);
-            return labelsArray.ToList();
+            var distancesArray = distances.ToArray();
+
+            Array.Sort(distancesArray, labelsArray);
+
+            labels.Clear();
+            labels.AddRange(labelsArray);
+            distances.Clear();
+            distances.AddRange(distancesArray);
+        }
+
+        public void ConfusionMatrix(List<bool> predicted_labels, List<bool> expert_labels, bool[] labels)
+        {
+            throw new NotImplementedException();
         }
     }
 }

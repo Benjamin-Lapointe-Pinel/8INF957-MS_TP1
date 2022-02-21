@@ -8,9 +8,9 @@ using TP01_HeartDiseaseDiagnostic;
 
 namespace TP1_app_BLP.Model
 {
-    public class HeartDiagnostic : IDiagnostic
+    public class Diagnostic : IDiagnostic
     {
-        public HeartDiagnostic(
+        public Diagnostic(
             [Name("cp")] float chestPain,
             [Name("thal")] float thalassemia,
             [Name("oldpeak")] float oldPeak,

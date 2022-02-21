@@ -9,13 +9,15 @@ namespace TP01_HeartDiseaseDiagnostic
     internal interface IKNN
     {
         /* main methods */
-        void Train(string filename_train_set_csv, int k = 1, string distance = "euclidean"); // or "manhattan"
-        float Evaluate(string filename_test_set_csv);
-        int Predict(HeartDiagnostic sample);
+        void Train(string filename_train_samples_csv, int k = 1, int distance = 1);
+        float Evaluate(string filename_test_samples_csv);
+        bool Predict(Diagnostic sample_to_predict);
         /* utils */
-        float EuclideanDistance(HeartDiagnostic first_sample, HeartDiagnostic second_sample);
-        float ManhattanDistance(HeartDiagnostic first_sample, HeartDiagnostic second_sample);
-        int Vote(List<int> sorted_labels);
-        List<int> ShellSort(List<float> distances, List<int> labels);
+        float EuclideanDistance(Diagnostic first_sample, Diagnostic second_sample);
+        float ManhattanDistance(Diagnostic first_sample, Diagnostic second_sample);
+        bool Vote(List<bool> sorted_labels);
+        void ConfusionMatrix(List<bool> predicted_labels, List<bool> expert_labels, bool[] labels);
+        void ShellSort(List<float> distances, List<bool> labels);
+        List<Diagnostic> ImportSamples(string filename_samples_csv);
     }
 }
