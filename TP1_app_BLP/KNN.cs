@@ -13,7 +13,6 @@ namespace TP01_HeartDiseaseDiagnostic
 {
     public class KNN : IKNN
     {
-
         private List<Diagnostic> heartDiagnostics;
         private int k;
         private Func<Diagnostic, Diagnostic, float> distanceFunction;
@@ -22,14 +21,14 @@ namespace TP01_HeartDiseaseDiagnostic
         {
             this.k = k;
 
-            this.distanceFunction = distance switch
+            distanceFunction = distance switch
             {
                 0 => ManhattanDistance,
                 1 => EuclideanDistance,
                 _ => throw new ArgumentException("invalid distance choice"),
             };
 
-            this.heartDiagnostics = ImportSamples(filename_train_set_csv);
+            heartDiagnostics = ImportSamples(filename_train_set_csv);
         }
 
         public float Evaluate(string filename_test_set_csv)
@@ -105,15 +104,22 @@ namespace TP01_HeartDiseaseDiagnostic
 
         public void ShellSort(List<float> distances, List<bool> labels)
         {
-            var labelsArray = labels.ToArray();
-            var distancesArray = distances.ToArray();
-
-            Array.Sort(distancesArray, labelsArray);
-
-            labels.Clear();
-            labels.AddRange(labelsArray);
-            distances.Clear();
-            distances.AddRange(distancesArray);
+            for (int gap = labels.Count / 2; gap >= 1; gap /= 2)
+            {
+                for (int i = gap; i < labels.Count; i += gap)
+                {
+                    float distance = distances[i];
+                    bool label = labels[i];
+                    int j = i;
+                    for (; j >= gap && distances[j - gap] > distance; j -= gap)
+                    {
+                        distances[j] = distances[j - gap];
+                        labels[j] = labels[j - gap];
+                    }
+                    distances[j] = distance;
+                    labels[j] = label;
+                }
+            }
         }
 
         public void ConfusionMatrix(List<bool> predicted_labels, List<bool> expert_labels, bool[] labels)
