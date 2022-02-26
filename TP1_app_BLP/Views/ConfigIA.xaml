@@ -9,19 +9,108 @@
       Title="ConfigIA">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Grid.Column="0" Grid.Row="3" Width="780">
 
-            <ComboBox FontSize="20" Height="40" Width="430" Margin="10 10 " />
-            <ComboBox FontSize="20" Height="40" Width="430" Margin="10 10" />
-        </StackPanel>
-        
-        
+        <Canvas Margin="10,58,0,-15" >
+            <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Width="780" Height="192" Canvas.Top="32" VerticalAlignment="Center" Canvas.Left="130">
 
+                <Button Content="Parcourir ..." FontSize="20" Height="40" Width="330"  Margin="10"/>
+                <Button Content="Parcourir ..." FontSize="20" Height="40" Width="330" Margin="10"/>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="6" Width="780">
-            <Button Content="Diagnostiquer" Margin="80 0 100 10" FontSize="20" Height="40" Width="156"/>
-            <TextBlock TextWrapping="Wrap" FontSize="20" Height="40" Margin="10 10 0 0"
-              Text="Résultat : Présence / Absence de Maladie" TextAlignment="Center" />
+            </StackPanel>
+            <TextBlock TextWrapping="Wrap" Text="Données de réference" FontSize="20" Height="40" Width="195" HorizontalAlignment="Left" Canvas.Top="45" VerticalAlignment="Center" Canvas.Left="70" />
+            <TextBlock TextWrapping="Wrap" Text="Données d'évaluation" FontSize="20" Height="40" Width="208" Canvas.Left="70" Canvas.Top="101" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Line
+                    X1="10" Y1="60"
+                    X2="660" Y2="60"
+                    Stroke="Black"
+                    StrokeThickness="1" HorizontalAlignment="Center" Canvas.Left="135" VerticalAlignment="Top" Canvas.Top="-50" Width="581" >
+            </Line>
+            <Line
+                X1="10" Y1="60"
+                X2="760" Y2="60"
+                Stroke="Black"
+                StrokeThickness="1" Canvas.Left="41" Width="679" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="110" />
+            <Line
+                X1="10" Y1="60"
+                X2="660" Y2="60"
+                Stroke="Black"
+                StrokeThickness="1" Canvas.Left="417" Width="171" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="299" RenderTransformOrigin="0.5,0.5" >
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90.358"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <TextBlock TextWrapping="Wrap" Text="Données" FontSize="20" Height="40" Width="208" Canvas.Left="60" Canvas.Top="-9" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line
+                X1="10" Y1="60"
+                X2="660" Y2="60"
+                Stroke="Black"
+                StrokeThickness="1" Canvas.Left="-251" Width="171" Canvas.Top="299" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90.358"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <TextBlock TextWrapping="Wrap" Text="Paramètres" FontSize="20" Height="40" Width="195" Canvas.Top="187" Canvas.Left="62" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBlock TextWrapping="Wrap" Text="Paramètres K" FontSize="20" Height="40" Width="195" Canvas.Top="221" Canvas.Left="70" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <TextBlock TextWrapping="Wrap" Text="Type de distance" FontSize="20" Height="40" Width="195" Canvas.Top="269" Canvas.Left="70" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Line
+                X1="10" Y1="60"
+                X2="660" Y2="60"
+                Stroke="Black"
+                StrokeThickness="1" Canvas.Left="416" Width="121" Canvas.Top="492" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90.358"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <Line
+                X1="10" Y1="60"
+                X2="660" Y2="60"
+                Stroke="Black"
+                StrokeThickness="1" Canvas.Left="-247" Width="123" Canvas.Top="491" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90.358"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <Line
+                X1="10" Y1="60"
+                X2="660" Y2="60"
+                Stroke="Black"
+                StrokeThickness="1" Canvas.Left="174" Width="544" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="142" />
+            <Line
+                X1="10" Y1="60"
+                X2="675" Y2="60"
+                Stroke="Black"
+                StrokeThickness="1" Canvas.Left="44" Width="757" Canvas.Top="254" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+            <ComboBox FontSize="20" Height="40" Width="330" HorizontalAlignment="Left" Canvas.Left="352" Canvas.Top="264" VerticalAlignment="Center"/>
+            <TextBox TextWrapping="Wrap" FontSize="20" Height="40" Width="330" HorizontalAlignment="Center" Canvas.Left="354" Canvas.Top="212" VerticalAlignment="Top"/>
+        </Canvas>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0" Width="784">
+            <Button Content="Evaluer" Margin="80 388 100 10" FontSize="20" Height="40" Width="156"/>
+            <TextBlock TextWrapping="Wrap" FontSize="20" Height="40" Margin="10 388 0 0"
+              Text="Taux de reconnaissance : ...%" TextAlignment="Center" />
+
         </StackPanel>
     </Grid>
 </Page>
