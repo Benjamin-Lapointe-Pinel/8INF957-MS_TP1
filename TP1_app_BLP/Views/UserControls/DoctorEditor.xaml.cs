@@ -12,27 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TP01_HeartDiseaseDiagnostic;
+using TP1_app_BLP.ViewsModels;
 
-namespace TP1_Projet.Views
+namespace TP1_app_BLP.Views
 {
-    /// <summary>
-    /// Interaction logic for CreerCompte.xaml
-    /// </summary>
-    public partial class CreerCompte : Page
+    public partial class DoctorEditor : UserControl
     {
-        public CreerCompte()
+        public DoctorEditor()
         {
             InitializeComponent();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

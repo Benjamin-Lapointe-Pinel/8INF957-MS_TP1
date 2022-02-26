@@ -10,18 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TP01_HeartDiseaseDiagnostic;
+using TP1_app_BLP.ViewsModels;
 
-namespace TP01_HeartDiseaseDiagnostic
+namespace TP1_app_BLP.Views
 {
-    public partial class MainWindow : Window
+    public partial class CreateAccount : Window
     {
-        public Doctor Doctor { get; private set; }
-        public MainWindow(Doctor doctor)
+        public DoctorEditorViewModel doctorEditorViewModel { get; private set; }
+        public CreateAccount()
         {
-            Doctor = doctor;
-
+            doctorEditorViewModel = new DoctorEditorViewModel(new Doctor());
+            DataContext = doctorEditorViewModel;
             InitializeComponent();
         }
     }

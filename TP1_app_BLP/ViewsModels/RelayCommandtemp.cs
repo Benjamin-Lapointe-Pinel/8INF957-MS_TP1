@@ -10,13 +10,13 @@ using System.Windows.Input;
 
 namespace TP1_Projet.ViewsModels
 {
-    public class RelayCommand : ICommand
+    public class RelayCommandtemp : ICommand
     {
         private readonly Predicate<object> _canExecute;
         private readonly Action<object> _execute;
         public ICommand MedecinCommand { get; private set; }
 
-        public RelayCommand(Predicate<object> canExecute, Action<object> execute)
+        public RelayCommandtemp(Predicate<object> canExecute, Action<object> execute)
         {
             _canExecute = canExecute;
             _execute = execute;

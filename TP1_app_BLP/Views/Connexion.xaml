@@ -19,14 +19,32 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0">
             <Label Content="Médecin" HorizontalAlignment="Left" FontSize="22" Margin="10,60,0,0" Height="39" Width="174"/>
-            <ComboBox HorizontalAlignment="Left" FontSize="22" Margin="10,60,0,0" Height="39" Width="174" >
-                <ComboBoxItem Content="Choice"></ComboBoxItem>
-            </ComboBox>
+            <ComboBox
+                HorizontalAlignment="Left"
+                FontSize="22"
+                Margin="10,60,0,0"
+                Height="39"
+                Width="174"
+                ItemsSource="{Binding Doctors}"
+                SelectedItem="{Binding SelectedDoctor}"/>
 
         </StackPanel>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Row="1">
-            <Button Content="Se Connecter" Height="51" VerticalAlignment="Center" FontSize="22" Width="376" />
-            <Button Content="Créer un Compte" VerticalAlignment="Center" Height="51" Width="376" FontSize="22" Margin="0,40,0,0"/>
+            <Button
+                Content="Se Connecter"
+                Height="51"
+                FontSize="22"
+                Width="376"
+                IsDefault="true"
+                Command="{Binding Connect}"/>
+            <Button
+                Content="Créer un Compte"
+                VerticalAlignment="Center"
+                Height="51"
+                Width="376"
+                FontSize="22"
+                Margin="0,40,0,0"
+                Command="{Binding CreateAccount}"/>
         </StackPanel>
 
 

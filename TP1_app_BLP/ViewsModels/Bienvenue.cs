@@ -15,7 +15,7 @@ namespace TP1_Projet.ViewsModels
         
         public Models.Medecin medecin { get; set; }
         public ObservableCollection<string> Professions { get; set; }
-       public RelayCommand MedecinCommand { get; }
+       public RelayCommandtemp MedecinCommand { get; }
 
         public Bienvenue()
         {
@@ -23,7 +23,7 @@ namespace TP1_Projet.ViewsModels
             Professions = new ObservableCollection<string>() { "Chirurgien", "Infirmier", "Ophtalmologue" };
 
        
-            MedecinCommand = new RelayCommand(
+            MedecinCommand = new RelayCommandtemp(
                 o => medecin.EstValide,
                 o => AfficherMessage()
             );

@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TP01_HeartDiseaseDiagnostic;
+using TP1_app_BLP.ViewsModels;
 
 namespace TP1_Projet.Views
 {
@@ -21,8 +23,11 @@ namespace TP1_Projet.Views
     /// </summary>
     public partial class Accueil : Window
     {
-        public Accueil()
+        private AccueilViewModel accueilViewModel;
+        public Accueil(Doctor doctor)
         {
+            accueilViewModel = new AccueilViewModel(doctor);
+            DataContext = accueilViewModel;
             InitializeComponent();
 
             TabItem tab = new TabItem();
