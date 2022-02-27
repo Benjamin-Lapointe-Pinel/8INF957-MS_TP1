@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="TP1_app_BLP.Views.DoctorEditor"
+﻿<UserControl x:Class="TP1_app_BLP.Views.UserControls.DoctorUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TP1_app_BLP.Views"
+             xmlns:local="clr-namespace:TP1_app_BLP.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="0,0,0,-6">
@@ -21,47 +21,82 @@
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Width="780"  >
             <Label Content="Nom" FontSize="22" Margin="10" Height="41" Width="100"/>
-            <TextBox TextWrapping="Wrap" FontSize="22" Height="41" Width="233" Text="{Binding Doctor.LastName}" />
+            <TextBox
+                TextWrapping="Wrap"
+                FontSize="22"
+                Height="41"
+                Width="233"
+                IsReadOnly="{Binding IsReadOnly}"
+                Text="{Binding Doctor.LastName}" />
             <Label Content="Prenom" FontSize="22" Height="41" Width="100" Margin="15"/>
-            <TextBox TextWrapping="Wrap" FontSize="22" Height="41" Width="260" Text="{Binding Doctor.FirstName}"/>
+            <TextBox
+                TextWrapping="Wrap"
+                FontSize="22"
+                Height="41"
+                Width="260"
+                IsReadOnly="{Binding IsReadOnly}"
+                Text="{Binding Doctor.FirstName}"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Margin="0,65,0,0" Grid.RowSpan="2" Width="780"  >
-
             <Label Content="Date de Naissance" Margin="10" FontSize="22" Height="41" Width="346"/>
-            <DatePicker FontSize="22" Height="41" Width="375" SelectedDate="{Binding Doctor.Birthdate}"/>
-
+            <DatePicker
+                FontSize="22"
+                Height="41"
+                Width="375"
+                IsEnabled="{Binding IsEnabled}"
+                SelectedDate="{Binding Doctor.Birthdate}"/>
         </StackPanel>
 
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="1" Margin="0,65,0,0" Grid.RowSpan="2" Width="780"  >
 
             <Label Content="Je suis" Margin="10" FontSize="22" Height="41" Width="349" />
-            <RadioButton Content="Un homme" FontSize="22" Height="41"   Width="225"/>
-            <RadioButton Content="Une femme" FontSize="22" Height="41"  Width="135"/>
+            <RadioButton
+                Content="Un homme"
+                FontSize="22"
+                Height="41"
+                Width="225"
+                IsEnabled="{Binding IsEnabled}"/>
+            <RadioButton
+                Content="Une femme"
+                FontSize="22"
+                Height="41"
+                Width="135"
+                IsEnabled="{Binding IsEnabled}"/>
 
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Margin="0,65,0,65" Grid.RowSpan="3" Width="780" >
-
             <Label Content="Ville" Margin="10" FontSize="22" Height="41" Width="360"/>
-            <ComboBox FontSize="22" Height="41" Width="357" ItemsSource="{Binding Villes}" SelectedIndex="0" SelectedItem="{Binding Doctor.Ville}"/>
-
-
+            <ComboBox
+                FontSize="22"
+                Height="41"
+                Width="357"
+                IsEnabled="{Binding IsEnabled}"
+                ItemsSource="{Binding Villes}"
+                SelectedIndex="0"
+                SelectedItem="{Binding Doctor.Ville}"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="4" Margin="0,0,0,65" Grid.RowSpan="2" Width="780"  >
-
-
             <Label Content="Date d'entrée en fonction" Margin="10" FontSize="22" Height="41" Width="354"/>
-            <DatePicker FontSize="22" Height="41" Width="366" SelectedDate="{Binding Doctor.DateEntryOffice}"/>
-
+            <DatePicker
+                FontSize="22"
+                Height="41"
+                Width="366"
+                IsEnabled="{Binding IsEnabled}"
+                SelectedDate="{Binding Doctor.DateEntryOffice}"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="5" Grid.RowSpan="2" Width="780"  >
-
-
             <Label Content="Adresse e-mail" Margin="10"  FontSize="22" Height="41" Width="358"/>
-            <TextBox TextWrapping="Wrap" FontSize="22" Height="41" Width="363" Text="{Binding Doctor.Email}" />
+            <TextBox
+                TextWrapping="Wrap"
+                FontSize="22"
+                Height="41"
+                Width="363"
+                IsReadOnly="{Binding IsReadOnly}"
+                Text="{Binding Doctor.Email}"/>
         </StackPanel>
     </Grid>
 </UserControl>

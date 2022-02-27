@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TP1_Projet.Views
+namespace TP1_app_BLP.Views.UserControls
 {
     /// <summary>
-    /// Interaction logic for ConfigIA.xaml
+    /// Interaction logic for ConfigIaUserControl.xaml
     /// </summary>
-    public partial class ConfigIA : Page
+    public partial class ConfigIaUserControl : UserControl
     {
-        public ConfigIA()
+        public ConfigIaUserControl()
         {
             InitializeComponent();
         }

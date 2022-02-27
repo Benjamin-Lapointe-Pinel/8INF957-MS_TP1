@@ -14,6 +14,9 @@ namespace TP01_HeartDiseaseDiagnostic
         public string LastName { get; set; }
         public DateOnly Birthdate { get; set; }
         public Gender Gender { get; set; }
+        public virtual bool IsValid =>
+            !string.IsNullOrWhiteSpace(FirstName) &&
+            !string.IsNullOrWhiteSpace(LastName);
 
         public Person()
         {

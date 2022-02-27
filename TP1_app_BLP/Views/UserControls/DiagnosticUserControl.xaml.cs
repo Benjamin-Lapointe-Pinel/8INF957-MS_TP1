@@ -13,14 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TP1_Projet.Views
+namespace TP1_app_BLP.Views.UserControls
 {
-    /// <summary>
-    /// Interaction logic for Diagnostic.xaml
-    /// </summary>
-    public partial class Diagnostic : Page
+    public partial class DiagnosticUserControl : UserControl
     {
-        public Diagnostic()
+        public DiagnosticUserControl()
         {
             InitializeComponent();
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP01_HeartDiseaseDiagnostic
 {
-    internal class Patient
+    public class Patient
     {
     }
 }

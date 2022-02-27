@@ -4,25 +4,20 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TP1_Projet.Views"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
       Title="Connexion">
-
     <Grid>
-
         <Grid.RowDefinitions >
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-
         </Grid.RowDefinitions>
 
-
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0">
-            <Label Content="Médecin" HorizontalAlignment="Left" FontSize="22" Margin="10,60,0,0" Height="39" Width="174"/>
+            <Label Content="Médecin" HorizontalAlignment="Left" FontSize="22" Margin="10,10,0,0" Height="39" Width="174"/>
             <ComboBox
                 HorizontalAlignment="Left"
                 FontSize="22"
-                Margin="10,60,0,0"
+                Margin="10,10,0,0"
                 Height="39"
                 Width="174"
                 ItemsSource="{Binding Doctors}"

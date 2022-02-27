@@ -12,14 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TP01_HeartDiseaseDiagnostic;
-using TP1_app_BLP.ViewsModels;
 
-namespace TP1_app_BLP.Views
+namespace TP1_app_BLP.Views.UserControls
 {
-    public partial class DoctorEditor : UserControl
+    public partial class DoctorUserControl : UserControl
     {
-        public DoctorEditor()
+        public DoctorUserControl()
         {
             InitializeComponent();
         }

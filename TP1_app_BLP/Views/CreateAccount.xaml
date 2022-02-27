@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TP1_app_BLP.Views"
+        xmlns:usercontrols="clr-namespace:TP1_app_BLP.Views.UserControls"
         mc:Ignorable="d"
-        Title="Créer un compte" Height="550" Width="800">
+        Title="Créer un compte" Height="450" Width="800">
     <StackPanel>
-        <local:DoctorEditor/>
+        <usercontrols:DoctorUserControl/>
         <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal" >
             <Button Content="Créer" Margin="10" FontSize="22" Height="41" Width="308" IsDefault="true" Command="{Binding ValidateDoctorAndCloseWindow}"/>
             <Button Content="Quitter" FontSize="22" Margin="10"  Height="41" Width="379" IsCancel="true" />

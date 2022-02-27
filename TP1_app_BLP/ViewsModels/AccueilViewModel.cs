@@ -7,14 +7,10 @@ using TP01_HeartDiseaseDiagnostic;
 
 namespace TP1_app_BLP.ViewsModels
 {
-    public class AccueilViewModel
+    public class AccueilViewModel : DoctorEditorViewModel
     {
-        public Doctor Doctor {get; private set;}
         public string Greeting => $"Bienvenue Dr. {Doctor}";
 
-        public AccueilViewModel(Doctor doctor)
-        {
-            Doctor = doctor;
-        }
+        public AccueilViewModel(Doctor doctor) : base(doctor, true) { }
     }
 }

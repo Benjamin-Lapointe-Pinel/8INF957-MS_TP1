@@ -11,7 +11,10 @@ namespace TP01_HeartDiseaseDiagnostic
         public DateOnly DateEntryOffice { get; set; }
         public string Email { get; set; }
         public string Ville { get; set; }
-
+        public override bool IsValid =>
+            base.IsValid &&
+            !string.IsNullOrWhiteSpace(Email) &&
+            !string.IsNullOrWhiteSpace(Ville);
 
         public Doctor(string firstName, string lastName, DateOnly birthdate, Gender gender, DateOnly dateEntryOffice, string email, string ville)
             : base(firstName, lastName, birthdate, gender)

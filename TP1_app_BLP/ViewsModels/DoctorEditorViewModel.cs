@@ -20,20 +20,18 @@ namespace TP1_app_BLP.ViewsModels
             "Montréal",
             "Rivière-du-Loup"
         };
+        public bool IsReadOnly { get; private set; }
+        public bool IsEnabled => !IsReadOnly;
         public Doctor Doctor { get; set; }
-        public bool IsValid =>
-            !string.IsNullOrWhiteSpace(Doctor.FirstName) &&
-            !string.IsNullOrWhiteSpace(Doctor.LastName) &&
-            !string.IsNullOrWhiteSpace(Doctor.Email) &&
-            !string.IsNullOrWhiteSpace(Doctor.Ville);
 
         public ICommand ValidateDoctorAndCloseWindow => new RelayCommand<Window>(
             window => window.DialogResult = true,
             window => true);
 
-        public DoctorEditorViewModel(Doctor doctor)
+        public DoctorEditorViewModel(Doctor doctor, bool isReadOnly = false)
         {
             Doctor = doctor;
+            IsReadOnly = isReadOnly;
         }
     }
 }

@@ -1,43 +1,20 @@
-﻿<Window x:Class="TP1_Projet.Views.Accueil"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TP1_Projet.Views"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="{Binding Greeting}"  >
-   
-
-    <Grid>
-
-        <!--DataGrid>
-         <DataGrid.Columns>
-                <DataGridTextColumn Header="Informations" Width="100" FontSize="20" Binding="{Binding }"></DataGridTextColumn>
-                <DataGridTextColumn Header="Diagnostique" Width="100" FontSize="20" Binding="{Binding }"></DataGridTextColumn>
-                <DataGridTextColumn Header="Configuration IA" Width="100" FontSize="20" Binding="{Binding }"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid-->
-
-        <!--" TabControl x:Name="TabControl" Margin="10"
-        ItemsSource="{Binding Onglets}">
-            <TabItem Header="Informations" >
-            </TabItem>
-            <TabItem Header="Diagnostique"  Content="{Binding Header}" >
-            </TabItem>
-            <TabItem Header="Configuration IA"  Content="{Binding Header}" >
-            </TabItem>
-        </TabControl-->
-
-        <TabControl x:Name="TabsControl" Margin="10">
-            <TabControl.ItemContainerStyle>
-                <Style TargetType="TabItem">
-                    <Setter Property="Header" Value="{Binding Header}" />
-                    <Setter Property="Content" Value="{Binding Content}" />
-                </Style>
-            </TabControl.ItemContainerStyle>
-
-
-        </TabControl>
-    </Grid>
+﻿<Window x:Class="TP1_app_BLP.Views.Accueil"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TP1_app_BLP.Views" xmlns:usercontrols="clr-namespace:TP1_app_BLP.Views.UserControls"
+        mc:Ignorable="d"
+        Title="Accueil" Height="600" Width="800">
+    <TabControl Margin="10">
+        <TabItem Header="Informations">
+            <usercontrols:DoctorUserControl/>
+        </TabItem>
+        <TabItem Header="Diagnostic">
+            <usercontrols:DiagnosticUserControl/>
+        </TabItem>
+        <TabItem Header="Configuration IA">
+            <usercontrols:ConfigIaUserControl/>
+        </TabItem>
+    </TabControl>
 </Window>
