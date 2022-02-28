@@ -23,7 +23,7 @@ namespace TP1_Projet.Views
         private ConnexionViewModel connexionViewModel;
         public Connexion()
         {
-            connexionViewModel = new ConnexionViewModel(this, new List<Doctor>
+            connexionViewModel = new ConnexionViewModel(new List<Doctor>
             {
                 new("Benjamin", "Lapointe", new(1995, 11, 13), Gender.Man, new DateOnly(), "lapb0010@uqar.ca", "Rimouski"),
                 new("Chloé", "Pazart", new(1997, 09, 3), Gender.Woman, new DateOnly(), "Chloé.Pazart@uqar.ca", "Rimouski")

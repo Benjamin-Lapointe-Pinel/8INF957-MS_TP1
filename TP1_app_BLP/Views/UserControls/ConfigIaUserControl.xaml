@@ -11,7 +11,7 @@
         <Canvas Margin="10,58,0,-15" >
             <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Width="780" Height="192" Canvas.Top="32" VerticalAlignment="Center" Canvas.Left="130">
 
-                <Button Content="Parcourir ..." FontSize="20" Height="40" Width="330"  Margin="10"/>
+                <Button Content="Parcourir ..." FontSize="20" Height="40" Width="330"  Margin="10" Click="Button_Click"/>
                 <Button Content="Parcourir ..." FontSize="20" Height="40" Width="330" Margin="10"/>
 
             </StackPanel>
@@ -38,7 +38,7 @@
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="90.358"/>
+                        <RotateTransform Angle="90"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </Line.RenderTransform>
@@ -53,7 +53,7 @@
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="90.358"/>
+                        <RotateTransform Angle="90"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </Line.RenderTransform>
@@ -70,7 +70,7 @@
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="90.358"/>
+                        <RotateTransform Angle="90"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </Line.RenderTransform>
@@ -84,7 +84,7 @@
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="90.358"/>
+                        <RotateTransform Angle="90"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </Line.RenderTransform>

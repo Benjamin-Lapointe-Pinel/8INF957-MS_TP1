@@ -13,13 +13,13 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0">
-            <Label Content="Médecin" HorizontalAlignment="Left" FontSize="22" Margin="10,10,0,0" Height="39" Width="174"/>
+            <Label Content="Médecin" HorizontalAlignment="Left" FontSize="22" Margin="10,10,0,0" Height="39"/>
             <ComboBox
                 HorizontalAlignment="Left"
                 FontSize="22"
                 Margin="10,10,0,0"
                 Height="39"
-                Width="174"
+                Width="260"
                 ItemsSource="{Binding Doctors}"
                 SelectedItem="{Binding SelectedDoctor}"/>
 
@@ -31,7 +31,8 @@
                 FontSize="22"
                 Width="376"
                 IsDefault="true"
-                Command="{Binding Connect}"/>
+                Command="{Binding Connect}"
+                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
             <Button
                 Content="Créer un Compte"
                 VerticalAlignment="Center"

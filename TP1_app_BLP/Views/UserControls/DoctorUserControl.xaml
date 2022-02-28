@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TP1_app_BLP.Views.UserControls"
+             xmlns:usercontrols="clr-namespace:TP1_app_BLP.Views.UserControls"
+             xmlns:converters="clr-namespace:TP1_app_BLP.ViewsModels.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:DateConverter x:Key="DateConverter" />
+    </UserControl.Resources>
     <Grid Margin="0,0,0,-6">
 
         <Grid.RowDefinitions >
@@ -45,7 +49,7 @@
                 Height="41"
                 Width="375"
                 IsEnabled="{Binding IsEnabled}"
-                SelectedDate="{Binding Doctor.Birthdate}"/>
+                SelectedDate="{Binding Doctor.Birthdate, Converter={StaticResource DateConverter}}"/>
         </StackPanel>
 
 
@@ -86,7 +90,7 @@
                 Height="41"
                 Width="366"
                 IsEnabled="{Binding IsEnabled}"
-                SelectedDate="{Binding Doctor.DateEntryOffice}"/>
+                SelectedDate="{Binding Doctor.DateEntryOffice, Converter={StaticResource DateConverter}}"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="5" Grid.RowSpan="2" Width="780"  >
             <Label Content="Adresse e-mail" Margin="10"  FontSize="22" Height="41" Width="358"/>

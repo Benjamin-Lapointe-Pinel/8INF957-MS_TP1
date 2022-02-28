@@ -26,7 +26,7 @@ namespace TP01_HeartDiseaseDiagnostic
 
         public Doctor() : base()
         {
-            DateEntryOffice = new DateOnly();
+            DateEntryOffice = DateOnly.FromDateTime(DateTime.Now);
             Email = "";
             Ville = "";
         }

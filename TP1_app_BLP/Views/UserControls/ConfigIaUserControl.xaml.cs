@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace TP1_app_BLP.Views.UserControls
 {
@@ -23,6 +24,16 @@ namespace TP1_app_BLP.Views.UserControls
         public ConfigIaUserControl()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            bool? result = openFileDialog.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                string file = openFileDialog.FileName;
+            }
         }
     }
 }

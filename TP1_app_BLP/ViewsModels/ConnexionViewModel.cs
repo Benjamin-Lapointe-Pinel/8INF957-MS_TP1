@@ -15,15 +15,14 @@ namespace TP1_app_BLP.ViewsModels
 {
     public class ConnexionViewModel
     {
-        private Window loginWindow;
         public List<Doctor> Doctors { get; private set; } = new List<Doctor>();
         public Doctor SelectedDoctor { get; set; }
 
-        public ICommand Connect => new RelayCommand(() =>
+        public ICommand Connect => new RelayCommand<Window>(window =>
         {
             var accueil = new Accueil(SelectedDoctor);
             accueil.Show();
-            loginWindow.Close();
+            window.Close();
         });
 
         public ICommand CreateAccount => new RelayCommand(() =>
@@ -36,9 +35,8 @@ namespace TP1_app_BLP.ViewsModels
             }
         });
 
-        public ConnexionViewModel(Window loginWindow, IEnumerable<Doctor> doctors)
+        public ConnexionViewModel(IEnumerable<Doctor> doctors)
         {
-            this.loginWindow = loginWindow;
             Doctors.AddRange(doctors);
             SelectedDoctor = Doctors[0];
         }

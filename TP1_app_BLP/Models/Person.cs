@@ -22,7 +22,7 @@ namespace TP01_HeartDiseaseDiagnostic
         {
             FirstName = "";
             LastName = "";
-            Birthdate = new DateOnly();
+            Birthdate = DateOnly.FromDateTime(DateTime.Now);
             Gender = Gender.Man;
         }
 
