@@ -16,7 +16,7 @@ namespace TP01_HeartDiseaseDiagnostic
             !string.IsNullOrWhiteSpace(Email) &&
             !string.IsNullOrWhiteSpace(Ville);
 
-        public Doctor(string firstName, string lastName, DateOnly birthdate, Gender gender, DateOnly dateEntryOffice, string email, string ville)
+        public Doctor(string firstName, string lastName, DateOnly birthdate, GenderEnum gender, DateOnly dateEntryOffice, string email, string ville)
             : base(firstName, lastName, birthdate, gender)
         {
             DateEntryOffice = dateEntryOffice;

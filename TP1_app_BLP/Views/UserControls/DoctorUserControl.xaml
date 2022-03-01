@@ -9,6 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <converters:DateConverter x:Key="DateConverter" />
+        <converters:ManConverter x:Key="ManConverter" />
+        <converters:WomanConverter x:Key="WomanConverter" />
     </UserControl.Resources>
     <Grid Margin="0,0,0,-6">
 
@@ -61,13 +63,15 @@
                 FontSize="22"
                 Height="41"
                 Width="225"
-                IsEnabled="{Binding IsEnabled}"/>
+                IsEnabled="{Binding IsEnabled}"
+                IsChecked="{Binding Doctor.Gender, Converter={StaticResource ManConverter}}"/>
             <RadioButton
                 Content="Une femme"
                 FontSize="22"
                 Height="41"
                 Width="135"
-                IsEnabled="{Binding IsEnabled}"/>
+                IsEnabled="{Binding IsEnabled}"
+                IsChecked="{Binding Doctor.Gender, Converter={StaticResource WomanConverter}}"/>
 
         </StackPanel>
 

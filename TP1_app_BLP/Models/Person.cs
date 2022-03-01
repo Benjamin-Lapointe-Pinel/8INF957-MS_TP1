@@ -13,7 +13,7 @@ namespace TP01_HeartDiseaseDiagnostic
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateOnly Birthdate { get; set; }
-        public Gender Gender { get; set; }
+        public GenderEnum Gender { get; set; }
         public virtual bool IsValid =>
             !string.IsNullOrWhiteSpace(FirstName) &&
             !string.IsNullOrWhiteSpace(LastName);
@@ -23,10 +23,10 @@ namespace TP01_HeartDiseaseDiagnostic
             FirstName = "";
             LastName = "";
             Birthdate = DateOnly.FromDateTime(DateTime.Now);
-            Gender = Gender.Man;
+            Gender = GenderEnum.Man;
         }
 
-        public Person(string firstName, string lastName, DateOnly birthdate, Gender gender)
+        public Person(string firstName, string lastName, DateOnly birthdate, GenderEnum gender)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -37,6 +37,12 @@ namespace TP01_HeartDiseaseDiagnostic
         public override string ToString()
         {
             return $"{LastName}, {FirstName}";
+        }
+
+        public enum GenderEnum
+        {
+            Man,
+            Woman
         }
     }
 }

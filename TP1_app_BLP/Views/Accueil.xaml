@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TP1_app_BLP.Views"
         xmlns:usercontrols="clr-namespace:TP1_app_BLP.Views.UserControls"
         mc:Ignorable="d"
-        Title="Accueil" Height="600" Width="800">
+        Title="{Binding Greeting}" Height="600" Width="800">
     <TabControl Margin="10">
         <TabItem Header="Informations">
             <usercontrols:DoctorUserControl/>
