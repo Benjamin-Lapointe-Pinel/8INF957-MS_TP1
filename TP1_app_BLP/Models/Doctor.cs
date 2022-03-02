@@ -10,25 +10,25 @@ namespace TP01_HeartDiseaseDiagnostic
     {
         public DateOnly DateEntryOffice { get; set; }
         public string Email { get; set; }
-        public string Ville { get; set; }
+        public string City { get; set; }
         public override bool IsValid =>
             base.IsValid &&
             !string.IsNullOrWhiteSpace(Email) &&
-            !string.IsNullOrWhiteSpace(Ville);
+            !string.IsNullOrWhiteSpace(City);
 
-        public Doctor(string firstName, string lastName, DateOnly birthdate, GenderEnum gender, DateOnly dateEntryOffice, string email, string ville)
+        public Doctor(string firstName, string lastName, DateOnly birthdate, GenderEnum gender, DateOnly dateEntryOffice, string email, string city)
             : base(firstName, lastName, birthdate, gender)
         {
             DateEntryOffice = dateEntryOffice;
             Email = email;
-            Ville = ville;
+            City = city;
         }
 
         public Doctor() : base()
         {
             DateEntryOffice = DateOnly.FromDateTime(DateTime.Now);
             Email = "";
-            Ville = "";
+            City = "";
         }
     }
 }

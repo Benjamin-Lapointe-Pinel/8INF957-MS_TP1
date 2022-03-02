@@ -10,13 +10,18 @@ namespace TP01_HeartDiseaseDiagnostic
 {
     public class Person
     {
+        public enum GenderEnum
+        {
+            Man,
+            Woman
+        }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateOnly Birthdate { get; set; }
         public GenderEnum Gender { get; set; }
-        public virtual bool IsValid =>
-            !string.IsNullOrWhiteSpace(FirstName) &&
-            !string.IsNullOrWhiteSpace(LastName);
+
+        public virtual bool IsValid => !string.IsNullOrWhiteSpace(FirstName) && !string.IsNullOrWhiteSpace(LastName);
 
         public Person()
         {
@@ -39,10 +44,6 @@ namespace TP01_HeartDiseaseDiagnostic
             return $"{LastName}, {FirstName}";
         }
 
-        public enum GenderEnum
-        {
-            Man,
-            Woman
-        }
+        
     }
 }

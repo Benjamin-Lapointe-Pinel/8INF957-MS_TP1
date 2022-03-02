@@ -33,7 +33,7 @@
                 Height="41"
                 Width="233"
                 IsReadOnly="{Binding IsReadOnly}"
-                Text="{Binding Doctor.LastName}" />
+                Text="{Binding Doctor.LastName, UpdateSourceTrigger=PropertyChanged }"/>
             <Label Content="Prenom" FontSize="22" Height="41" Width="100" Margin="15"/>
             <TextBox
                 TextWrapping="Wrap"
@@ -41,7 +41,7 @@
                 Height="41"
                 Width="260"
                 IsReadOnly="{Binding IsReadOnly}"
-                Text="{Binding Doctor.FirstName}"/>
+                Text="{Binding Doctor.FirstName, UpdateSourceTrigger=PropertyChanged }"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Margin="0,65,0,0" Grid.RowSpan="2" Width="780"  >
@@ -51,7 +51,7 @@
                 Height="41"
                 Width="375"
                 IsEnabled="{Binding IsEnabled}"
-                SelectedDate="{Binding Doctor.Birthdate, Converter={StaticResource DateConverter}}"/>
+                SelectedDate="{Binding Doctor.Birthdate, Converter={StaticResource DateConverter}, UpdateSourceTrigger=PropertyChanged }"/>
         </StackPanel>
 
 
@@ -64,14 +64,14 @@
                 Height="41"
                 Width="225"
                 IsEnabled="{Binding IsEnabled}"
-                IsChecked="{Binding Doctor.Gender, Converter={StaticResource ManConverter}}"/>
+                IsChecked="{Binding Doctor.Gender, Converter={StaticResource ManConverter}, UpdateSourceTrigger=PropertyChanged }"/>
             <RadioButton
                 Content="Une femme"
                 FontSize="22"
                 Height="41"
                 Width="135"
                 IsEnabled="{Binding IsEnabled}"
-                IsChecked="{Binding Doctor.Gender, Converter={StaticResource WomanConverter}}"/>
+                IsChecked="{Binding Doctor.Gender, Converter={StaticResource WomanConverter}, UpdateSourceTrigger=PropertyChanged }"/>
 
         </StackPanel>
 
@@ -82,9 +82,8 @@
                 Height="41"
                 Width="357"
                 IsEnabled="{Binding IsEnabled}"
-                ItemsSource="{Binding Villes}"
-                SelectedIndex="0"
-                SelectedItem="{Binding Doctor.Ville}"/>
+                ItemsSource="{Binding Cities}"
+                SelectedItem="{Binding Doctor.City, UpdateSourceTrigger=PropertyChanged }"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="4" Margin="0,0,0,65" Grid.RowSpan="2" Width="780"  >
@@ -94,7 +93,7 @@
                 Height="41"
                 Width="366"
                 IsEnabled="{Binding IsEnabled}"
-                SelectedDate="{Binding Doctor.DateEntryOffice, Converter={StaticResource DateConverter}}"/>
+                SelectedDate="{Binding Doctor.DateEntryOffice, Converter={StaticResource DateConverter}, UpdateSourceTrigger=PropertyChanged }"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="5" Grid.RowSpan="2" Width="780"  >
             <Label Content="Adresse e-mail" Margin="10"  FontSize="22" Height="41" Width="358"/>
@@ -104,7 +103,7 @@
                 Height="41"
                 Width="363"
                 IsReadOnly="{Binding IsReadOnly}"
-                Text="{Binding Doctor.Email}"/>
+                Text="{Binding Doctor.Email, UpdateSourceTrigger=PropertyChanged }"/>
         </StackPanel>
     </Grid>
 </UserControl>
