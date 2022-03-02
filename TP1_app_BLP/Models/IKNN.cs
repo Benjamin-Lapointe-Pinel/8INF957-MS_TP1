@@ -6,7 +6,7 @@ using TP1_app_BLP.Model;
 
 namespace TP01_HeartDiseaseDiagnostic
 {
-    internal interface IKNN
+    public interface IKNN
     {
         /* main methods */
         void Train(string filename_train_samples_csv, int k = 1, int distance = 1);

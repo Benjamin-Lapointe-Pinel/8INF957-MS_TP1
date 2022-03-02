@@ -11,8 +11,20 @@
         <Canvas Margin="10,58,0,-15" >
             <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Width="780" Height="192" Canvas.Top="32" VerticalAlignment="Center" Canvas.Left="130">
 
-                <Button Content="Parcourir ..." FontSize="20" Height="40" Width="330"  Margin="10" Click="Button_Click"/>
-                <Button Content="Parcourir ..." FontSize="20" Height="40" Width="330" Margin="10"/>
+                <Button
+                    Content="Parcourir ..."
+                    FontSize="20"
+                    Height="40"
+                    Width="330"
+                    Margin="10"
+                    Command="{Binding TrainCommand}"/>
+                <Button
+                    Content="Parcourir ..."
+                    FontSize="20"
+                    Height="40"
+                    Width="330"
+                    Margin="10"
+                    Command="{Binding TestCommand}"/>
 
             </StackPanel>
             <TextBlock TextWrapping="Wrap" Text="Données de réference" FontSize="20" Height="40" Width="195" HorizontalAlignment="Left" Canvas.Top="45" VerticalAlignment="Center" Canvas.Left="70" />
@@ -101,13 +113,33 @@
                 StrokeThickness="1" Canvas.Left="44" Width="757" Canvas.Top="254" HorizontalAlignment="Left" VerticalAlignment="Center" />
 
             <ComboBox FontSize="20" Height="40" Width="330" HorizontalAlignment="Left" Canvas.Left="352" Canvas.Top="264" VerticalAlignment="Center"/>
-            <TextBox TextWrapping="Wrap" FontSize="20" Height="40" Width="330" HorizontalAlignment="Center" Canvas.Left="354" Canvas.Top="212" VerticalAlignment="Top"/>
+            <TextBox
+                TextWrapping="Wrap"
+                FontSize="20"
+                Height="40"
+                Width="330"
+                HorizontalAlignment="Center"
+                Canvas.Left="354"
+                Canvas.Top="212"
+                VerticalAlignment="Top"
+                Text=""/>
         </Canvas>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0" Width="784">
-            <Button Content="Evaluer" Margin="80 388 100 10" FontSize="20" Height="40" Width="156"/>
-            <TextBlock TextWrapping="Wrap" FontSize="20" Height="40" Margin="10 388 0 0"
-              Text="Taux de reconnaissance : ...%" TextAlignment="Center" />
+            <Button
+                Content="Evaluer"
+                Margin="80 388 100 10"
+                FontSize="20"
+                Height="40"
+                Width="156"
+                Command="{Binding EvaluateCommand}"/>
+            <TextBlock
+                TextWrapping="Wrap"
+                FontSize="20"
+                Height="40"
+                Margin="10 388 0 0"
+                TextAlignment="Center"
+                Text="{Binding SuccessRateMessage}" />
 
         </StackPanel>
     </Grid>

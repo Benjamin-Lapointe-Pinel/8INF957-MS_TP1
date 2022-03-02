@@ -16,6 +16,7 @@ namespace TP01_HeartDiseaseDiagnostic
         private List<Diagnostic> heartDiagnostics;
         private int k;
         private Func<Diagnostic, Diagnostic, float> distanceFunction;
+        public bool HasBeenTrained => heartDiagnostics != null && heartDiagnostics.Any();
 
         public void Train(string filename_train_set_csv, int k = 6, int distance = 1)
         {

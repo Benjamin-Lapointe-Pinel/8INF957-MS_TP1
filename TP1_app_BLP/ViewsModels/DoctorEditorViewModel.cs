@@ -23,7 +23,7 @@ namespace TP1_app_BLP.ViewsModels
         public bool IsReadOnly { get; private set; }
         public bool IsEnabled => !IsReadOnly;
         public Doctor Doctor { get; set; }
-        public ICommand ValidateDoctorAndCloseWindow { get; set; }
+        public ICommand ValidateDoctorAndCloseWindow { get; private set; }
 
         public DoctorEditorViewModel(Doctor doctor, bool isReadOnly = false)
         {

@@ -25,15 +25,5 @@ namespace TP1_app_BLP.Views.UserControls
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            bool? result = openFileDialog.ShowDialog();
-            if (result.HasValue && result.Value)
-            {
-                string file = openFileDialog.FileName;
-            }
-        }
     }
 }
