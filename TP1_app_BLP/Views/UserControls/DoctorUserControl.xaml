@@ -21,6 +21,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
 
@@ -105,5 +106,18 @@
                 IsReadOnly="{Binding IsReadOnly}"
                 Text="{Binding Doctor.Email, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
+        <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal" Grid.Column="0" Grid.Row="6" Margin="10,20,0,5" >
+			<Button
+                Content="Modifier"
+                Margin="16 5"
+                FontSize="22"
+                Height="39"
+                Width="250"
+                
+                Command="{Binding }"
+                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
+            <Button Content="Annuler" FontSize="22" Margin="16 5"  Height="39"
+                Width="250" IsCancel="true" />
+		</StackPanel>
     </Grid>
 </UserControl>

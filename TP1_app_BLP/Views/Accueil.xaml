@@ -11,7 +11,7 @@
         <TabItem Header="Informations">
             <usercontrols:DoctorUserControl/>
         </TabItem>
-        <TabItem Header="Diagnostic">
+        <TabItem Header="Diagnostique">
             <usercontrols:DiagnosticUserControl/>
         </TabItem>
         <TabItem Header="Configuration IA">

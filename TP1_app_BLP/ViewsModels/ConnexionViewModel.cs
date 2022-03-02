@@ -16,6 +16,7 @@ namespace TP1_app_BLP.ViewsModels
     {
         public List<Doctor> Doctors { get; private set; } = new List<Doctor>();
         public Doctor SelectedDoctor { get; set; }
+
         public ICommand Connect { get; private set; }
         public ICommand CreateAccount { get; private set; }
 
