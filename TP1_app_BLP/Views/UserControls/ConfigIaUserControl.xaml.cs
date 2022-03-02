@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,14 +17,18 @@ using Microsoft.Win32;
 
 namespace TP1_app_BLP.Views.UserControls
 {
-    /// <summary>
-    /// Interaction logic for ConfigIaUserControl.xaml
-    /// </summary>
     public partial class ConfigIaUserControl : UserControl
     {
         public ConfigIaUserControl()
         {
             InitializeComponent();
+        }
+
+        // https://stackoverflow.com/questions/1268552/how-do-i-get-a-textbox-to-only-accept-numeric-input-in-wpf
+        private void TextBoxK_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -10,21 +12,46 @@ using TP01_HeartDiseaseDiagnostic;
 
 namespace TP1_app_BLP.ViewsModels
 {
-    public class AccueilViewModel : DoctorEditorViewModel
+    public class AccueilViewModel : DoctorEditorViewModel, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public List<string> Distances { get; private set; } = new()
+        {
+            "Manhattan",
+            "Euclidienne"
+        };
         private string trainFile;
         private string testFile;
-        private float successRate;
+        private float _successRate;
         private IKNN knn;
-        public int K { get; set; }
+        private bool KnnReady => knn == null;
+        public int K { get; set; } = 1;
         public int Distance { get; set; }
-        private bool validForm => !string.IsNullOrWhiteSpace(trainFile) && !string.IsNullOrWhiteSpace(testFile);
+        private bool validForm =>
+            !string.IsNullOrWhiteSpace(trainFile) &&
+            !string.IsNullOrWhiteSpace(testFile) &&
+            K > 0;
         public ICommand TrainCommand { get; private set; }
         public ICommand TestCommand { get; private set; }
         public ICommand EvaluateCommand { get; private set; }
-
         public string Greeting => $"Bienvenue Dr. {Doctor}";
-        public string SuccessRateMessage => $"Taux de reconnaissance : {successRate}%";
+        private string _successRateMessage;
+        public string SuccessRateMessage
+        {
+            get
+            {
+                return _successRateMessage;
+            }
+            set
+            {
+                if (_successRateMessage != value)
+                {
+                    _successRateMessage = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public AccueilViewModel(Doctor doctor) : base(doctor, true)
         {
@@ -50,8 +77,14 @@ namespace TP1_app_BLP.ViewsModels
             {
                 knn = new KNN();
                 knn.Train(trainFile, K, Distance);
-                successRate = knn.Evaluate(testFile);
+                float successRate = knn.Evaluate(testFile) * 100;
+                SuccessRateMessage = $"Taux de reconnaissance : {successRate:F2}%";
             }, () => validForm);
+        }
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

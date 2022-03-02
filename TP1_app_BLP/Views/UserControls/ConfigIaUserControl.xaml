@@ -112,7 +112,16 @@
                 Stroke="Black"
                 StrokeThickness="1" Canvas.Left="44" Width="757" Canvas.Top="254" HorizontalAlignment="Left" VerticalAlignment="Center" />
 
-            <ComboBox FontSize="20" Height="40" Width="330" HorizontalAlignment="Left" Canvas.Left="352" Canvas.Top="264" VerticalAlignment="Center"/>
+            <ComboBox
+                FontSize="20"
+                Height="40"
+                Width="330"
+                HorizontalAlignment="Left"
+                Canvas.Left="352"
+                Canvas.Top="264"
+                VerticalAlignment="Center"
+                ItemsSource="{Binding Distances}"
+                SelectedIndex="{Binding Distance, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBox
                 TextWrapping="Wrap"
                 FontSize="20"
@@ -122,25 +131,24 @@
                 Canvas.Left="354"
                 Canvas.Top="212"
                 VerticalAlignment="Top"
-                Text=""/>
+                PreviewTextInput="TextBoxK_PreviewTextInput"
+                Text="{Binding K, UpdateSourceTrigger=PropertyChanged}"/>
         </Canvas>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0" Width="784">
             <Button
-                Content="Evaluer"
+                Content="Évaluer"
                 Margin="80 388 100 10"
                 FontSize="20"
                 Height="40"
                 Width="156"
                 Command="{Binding EvaluateCommand}"/>
-            <TextBlock
-                TextWrapping="Wrap"
+            <Label
                 FontSize="20"
                 Height="40"
+                Width="400"
                 Margin="10 388 0 0"
-                TextAlignment="Center"
-                Text="{Binding SuccessRateMessage}" />
-
+                Content="{Binding SuccessRateMessage}" />
         </StackPanel>
     </Grid>
 </UserControl>

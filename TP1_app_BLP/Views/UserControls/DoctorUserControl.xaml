@@ -103,7 +103,7 @@
                 Height="41"
                 Width="363"
                 IsReadOnly="{Binding IsReadOnly}"
-                Text="{Binding Doctor.Email, UpdateSourceTrigger=PropertyChanged }"/>
+                Text="{Binding Doctor.Email, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
     </Grid>
 </UserControl>
