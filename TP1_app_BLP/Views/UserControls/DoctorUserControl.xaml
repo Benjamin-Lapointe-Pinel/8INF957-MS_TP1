@@ -106,6 +106,5 @@
                 IsReadOnly="{Binding IsReadOnly}"
                 Text="{Binding Doctor.Email, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
-       
     </Grid>
 </UserControl>
