@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TP1_app_BLP.Views"
         xmlns:usercontrols="clr-namespace:TP1_app_BLP.Views.UserControls"
+        
         mc:Ignorable="d"
         Title="Créer un compte" Height="550" Width="800">
     <StackPanel>

@@ -12,28 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TP01_HeartDiseaseDiagnostic;
-using TP1_app_BLP.ViewsModels;
 
-namespace TP1_app_BLP.Views
+namespace TP1_app_BLP.Views.UserControls
 {
     /// <summary>
-    /// Interaction logic for ComptePatient.xaml
+    /// Interaction logic for PatientUserControl.xaml
     /// </summary>
-    /// 
-    
-    public partial class ComptePatient : Window
+    public partial class PatientUserControl : UserControl
     {
-        private Patient selectedPatient;
-
-        public PatientViewModel patientViewModel { get; private set; }
-        public ComptePatient()
+        public PatientUserControl()
         {
-            patientViewModel = new PatientViewModel(new Patient());
-            DataContext = patientViewModel;
             InitializeComponent();
         }
-
-        
     }
 }

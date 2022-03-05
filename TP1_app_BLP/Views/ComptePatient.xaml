@@ -4,11 +4,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TP1_app_BLP.Views"
+      xmlns:usercontrols="clr-namespace:TP1_app_BLP.Views.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Ajouter un patient" Height="550" Width="800">
 
     <Grid>
+       
+            <usercontrols:PatientUserControl/>
+       
         
     </Grid>
 </Window>

@@ -19,9 +19,12 @@
         </Grid.RowDefinitions>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Width="780">
-            <ComboBox Width="248" FontSize="20" Height="40" Margin="40 0 10 0"/>
-            <Button Content="informations" Margin="10 0 0 0" FontSize="20" Height="40" Width="220"/>
-            <Button Content="Ajouter un patient" Margin="10" FontSize="20" Height="40" Width="211"/>
+            <ComboBox Width="248" FontSize="20" Height="40" Margin="40 0 10 0"
+                ItemsSource="{Binding Patients}"
+                SelectedItem="{Binding SelectedPatient}"
+        />
+            <Button Content="informations" Command="{Binding InfoPatient}" Margin="10 0 0 0" FontSize="20" Height="40" Width="220"/>
+            <Button Content="Ajouter un patient" Command="{Binding ComptePatient}" Margin="10" FontSize="20" Height="40" Width="211"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="1" Width="780">
