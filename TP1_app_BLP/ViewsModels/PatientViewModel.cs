@@ -10,7 +10,7 @@ using TP01_HeartDiseaseDiagnostic;
 
 namespace TP1_app_BLP.ViewsModels
 {
-    internal class PatientViewModel
+    public class PatientViewModel
     {
         public List<string> Villes { get; private set; } = new()
         {

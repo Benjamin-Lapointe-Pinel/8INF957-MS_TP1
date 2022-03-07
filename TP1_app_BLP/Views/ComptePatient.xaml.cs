@@ -17,23 +17,14 @@ using TP1_app_BLP.ViewsModels;
 
 namespace TP1_app_BLP.Views
 {
-    /// <summary>
-    /// Interaction logic for ComptePatient.xaml
-    /// </summary>
-    /// 
-    
     public partial class ComptePatient : Window
     {
-        private Patient selectedPatient;
-
         public PatientViewModel patientViewModel { get; private set; }
-        public ComptePatient()
+        public ComptePatient(Patient? patient = null)
         {
-            patientViewModel = new PatientViewModel(new Patient());
+            patientViewModel = new PatientViewModel(patient ?? new Patient());
             DataContext = patientViewModel;
             InitializeComponent();
         }
-
-        
     }
 }

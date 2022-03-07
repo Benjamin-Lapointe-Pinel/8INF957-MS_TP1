@@ -5,10 +5,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.CommandWpf;
 using Microsoft.Win32;
 using TP01_HeartDiseaseDiagnostic;
+using TP1_app_BLP.Views;
 
 namespace TP1_app_BLP.ViewsModels
 {
@@ -52,6 +54,10 @@ namespace TP1_app_BLP.ViewsModels
                 }
             }
         }
+        public List<Patient> Patients { get; private set; } = new List<Patient>();
+        public ICommand InfoPatient { get; private set; }
+        public ICommand ComptePatient { get; private set; }
+        public Patient SelectedPatient { get; set; }
 
         public AccueilViewModel(Doctor doctor) : base(doctor, true)
         {
@@ -80,6 +86,21 @@ namespace TP1_app_BLP.ViewsModels
                 float successRate = knn.Evaluate(testFile) * 100;
                 SuccessRateMessage = $"Taux de reconnaissance : {successRate:F2}%";
             }, () => validForm);
+            ComptePatient = new RelayCommand(() =>
+            {
+                var comptePatient = new ComptePatient();
+                bool? result = comptePatient.ShowDialog();
+                if (result.HasValue && result.Value)
+                {
+                    Patients.Add(comptePatient.patientViewModel.Patient);
+                }
+            });
+            InfoPatient = new RelayCommand<Window>(window =>
+            {
+                var infoPatient = new ComptePatient(SelectedPatient);
+                infoPatient.Show();
+                window.Close();
+            });
         }
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = "")
