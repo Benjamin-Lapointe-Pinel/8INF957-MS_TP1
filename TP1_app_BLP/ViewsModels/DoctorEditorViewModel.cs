@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,8 +12,10 @@ using TP01_HeartDiseaseDiagnostic;
 
 namespace TP1_app_BLP.ViewsModels
 {
-    public class DoctorEditorViewModel
+    public class DoctorEditorViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public List<string> Cities { get; private set; } = new()
         {
             "Rimouski",
@@ -22,7 +26,22 @@ namespace TP1_app_BLP.ViewsModels
         };
         public bool IsReadOnly { get; private set; }
         public bool IsEnabled => !IsReadOnly;
-        public Doctor Doctor { get; set; }
+        private Doctor _doctor;
+        public Doctor Doctor
+        {
+            get
+            {
+                return _doctor;
+            }
+            set
+            {
+                if (_doctor != value)
+                {
+                    _doctor = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         public ICommand ValidateDoctorAndCloseWindow { get; private set; }
 
         public DoctorEditorViewModel(Doctor doctor, bool isReadOnly = false)
@@ -33,6 +52,11 @@ namespace TP1_app_BLP.ViewsModels
             ValidateDoctorAndCloseWindow = new RelayCommand<Window>(
                 window => window.DialogResult = true,
                 window => Doctor.IsValid);
+        }
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

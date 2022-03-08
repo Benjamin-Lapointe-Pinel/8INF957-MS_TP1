@@ -14,10 +14,8 @@ using TP1_app_BLP.Views;
 
 namespace TP1_app_BLP.ViewsModels
 {
-    public class AccueilViewModel : DoctorEditorViewModel, INotifyPropertyChanged
+    public class AccueilViewModel : DoctorEditorViewModel
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
         public List<string> Distances { get; private set; } = new()
         {
             "Manhattan",
@@ -26,14 +24,17 @@ namespace TP1_app_BLP.ViewsModels
         private string trainFile;
         private string testFile;
         private float _successRate;
+        private Doctor backupDoctor;
         private IKNN knn;
         private bool KnnReady => knn == null;
         public int K { get; set; } = 1;
         public int Distance { get; set; }
-        private bool validForm =>
+        private bool configIaFormIsValid =>
             !string.IsNullOrWhiteSpace(trainFile) &&
             !string.IsNullOrWhiteSpace(testFile) &&
             K > 0;
+        public ICommand ModifyDoctor { get; private set; }
+        public ICommand CancelDoctor { get; private set; }
         public ICommand TrainCommand { get; private set; }
         public ICommand TestCommand { get; private set; }
         public ICommand EvaluateCommand { get; private set; }
@@ -59,8 +60,12 @@ namespace TP1_app_BLP.ViewsModels
         public ICommand ComptePatient { get; private set; }
         public Patient SelectedPatient { get; set; }
 
-        public AccueilViewModel(Doctor doctor) : base(doctor, true)
+        public AccueilViewModel(Doctor doctor) : base(doctor)
         {
+            backupDoctor = new Doctor(doctor);
+
+            ModifyDoctor = new RelayCommand(() => backupDoctor = new Doctor(Doctor), () => Doctor.IsValid);
+            CancelDoctor = new RelayCommand(() => Doctor = new Doctor(backupDoctor));
             TrainCommand = new RelayCommand(() =>
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -85,7 +90,7 @@ namespace TP1_app_BLP.ViewsModels
                 knn.Train(trainFile, K, Distance);
                 float successRate = knn.Evaluate(testFile) * 100;
                 SuccessRateMessage = $"Taux de reconnaissance : {successRate:F2}%";
-            }, () => validForm);
+            }, () => configIaFormIsValid);
             ComptePatient = new RelayCommand(() =>
             {
                 var comptePatient = new ComptePatient();
@@ -99,14 +104,9 @@ namespace TP1_app_BLP.ViewsModels
             {
                 var infoPatient = new ComptePatient(SelectedPatient);
                 infoPatient.Show();
-                
-                
-            });
-        }
 
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+            });
         }
     }
 }

@@ -30,5 +30,9 @@ namespace TP01_HeartDiseaseDiagnostic
             Email = "";
             City = "";
         }
+
+        public Doctor(Doctor doctor)
+            : this(doctor.FirstName, doctor.LastName, doctor.Birthdate, doctor.Gender, doctor.DateEntryOffice, doctor.Email, doctor.City)
+        { }
     }
 }
