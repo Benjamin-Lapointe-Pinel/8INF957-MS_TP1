@@ -99,7 +99,8 @@ namespace TP1_app_BLP.ViewsModels
             {
                 var infoPatient = new ComptePatient(SelectedPatient);
                 infoPatient.Show();
-                window.Close();
+                
+                
             });
         }
 

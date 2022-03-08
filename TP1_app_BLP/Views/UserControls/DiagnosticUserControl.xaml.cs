@@ -20,6 +20,7 @@ namespace TP1_app_BLP.Views.UserControls
         public DiagnosticUserControl()
         {
             InitializeComponent();
+            
         }
     }
 }
