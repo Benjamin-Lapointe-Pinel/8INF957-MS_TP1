@@ -15,7 +15,7 @@ namespace TP1_app_BLP.Model
             [Name("thal")] float thalassemia,
             [Name("oldpeak")] float oldPeak,
             [Name("ca")] float fluoroscopy,
-            [Name("target")] float diagnostic)
+            [Name("target")] float diagnostic = 0)
         {
             Features = new float[4];
             Features[0] = chestPain;

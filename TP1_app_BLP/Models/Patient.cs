@@ -8,14 +8,13 @@ namespace TP01_HeartDiseaseDiagnostic
 {
     public class Patient : Person
     {
-        public bool Diagnostic { get; private set; }
+        public bool Diagnostic { get; set; } = false;
 
         public Patient()
         {
-            Diagnostic = false;
         }
 
-        public Patient(string firstName, string lastName, DateOnly birthdate, GenderEnum gender, bool diagnostic) : base(firstName, lastName, birthdate, gender)
+        public Patient(string firstName, string lastName, DateOnly birthdate, GenderEnum gender, bool diagnostic = false) : base(firstName, lastName, birthdate, gender)
         {
             Diagnostic = diagnostic;
         }

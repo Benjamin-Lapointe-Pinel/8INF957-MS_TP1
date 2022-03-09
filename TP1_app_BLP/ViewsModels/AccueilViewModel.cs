@@ -10,6 +10,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.CommandWpf;
 using Microsoft.Win32;
 using TP01_HeartDiseaseDiagnostic;
+using TP1_app_BLP.Model;
 using TP1_app_BLP.Views;
 
 namespace TP1_app_BLP.ViewsModels
@@ -21,31 +22,40 @@ namespace TP1_app_BLP.ViewsModels
             "Manhattan",
             "Euclidienne"
         };
+        public List<string> TypesDouleurThoracique { get; set; } = new()
+        {
+            "angine typique",
+            "angine atypique",
+            "douleur non angineuse",
+            "asymptomatique"
+        };
+        public int SelectedTypesDouleurThoracique { get; set; } = 0;
+        public List<string> Thalassemie { get; set; } = new()
+        {
+            "normale",
+            "défaut corrigé",
+            "défaut réversible"
+        };
+        public int SelectedThalassemie { get; set; } = 0;
+        public float OldPeak { get; set; } = 0;
+        public int Fluoroscopie { get; set; } = 0;
+        public List<Patient> Patients { get; private set; }
+        public Patient SelectedPatient { get; set; }
         private string trainFile;
         private string testFile;
-        private float _successRate;
         private Doctor backupDoctor;
         private IKNN knn;
-        private bool KnnReady => knn == null;
+        private bool KnnReady => knn != null;
         public int K { get; set; } = 1;
         public int Distance { get; set; }
         private bool configIaFormIsValid =>
             !string.IsNullOrWhiteSpace(trainFile) &&
             !string.IsNullOrWhiteSpace(testFile) &&
             K > 0;
-        public ICommand ModifyDoctor { get; private set; }
-        public ICommand CancelDoctor { get; private set; }
-        public ICommand TrainCommand { get; private set; }
-        public ICommand TestCommand { get; private set; }
-        public ICommand EvaluateCommand { get; private set; }
-        public string Greeting => $"Bienvenue Dr. {Doctor}";
         private string _successRateMessage;
         public string SuccessRateMessage
         {
-            get
-            {
-                return _successRateMessage;
-            }
+            get => _successRateMessage;
             set
             {
                 if (_successRateMessage != value)
@@ -55,14 +65,41 @@ namespace TP1_app_BLP.ViewsModels
                 }
             }
         }
-        public List<Patient> Patients { get; private set; } = new List<Patient>();
+        private string _diagnosticMessage;
+        public string DiagnosticMessage
+        {
+            get => _diagnosticMessage;
+            set
+            {
+                if (_diagnosticMessage != value)
+                {
+                    _diagnosticMessage = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public string Greeting => $"Bienvenue Dr. {Doctor}";
+        public ICommand ModifyDoctor { get; private set; }
+        public ICommand CancelDoctor { get; private set; }
+        public ICommand TrainCommand { get; private set; }
+        public ICommand TestCommand { get; private set; }
+        public ICommand EvaluateCommand { get; private set; }
+
         public ICommand InfoPatient { get; private set; }
         public ICommand ComptePatient { get; private set; }
-        public Patient SelectedPatient { get; set; }
+        public ICommand Diagnose { get; private set; }
 
         public AccueilViewModel(Doctor doctor) : base(doctor)
         {
             backupDoctor = new Doctor(doctor);
+
+            Patients = new()
+            {
+                new("Benjamin", "Lapointe", new(1995, 11, 13), Person.GenderEnum.Man),
+                new("Mamadou", "Diallo", new(1994, 09, 3), Person.GenderEnum.Man),
+                new("Bhas", "Fatemeh", new(1997, 09, 3), Person.GenderEnum.Woman)
+            };
+            SelectedPatient = Patients[0];
 
             ModifyDoctor = new RelayCommand(() => backupDoctor = new Doctor(Doctor), () => Doctor.IsValid);
             CancelDoctor = new RelayCommand(() => Doctor = new Doctor(backupDoctor));
@@ -107,6 +144,19 @@ namespace TP1_app_BLP.ViewsModels
 
 
             });
+            Diagnose = new RelayCommand(() =>
+            {
+                Diagnostic diagnostic = new(SelectedTypesDouleurThoracique, SelectedThalassemie + 1, OldPeak, Fluoroscopie);
+                SelectedPatient.Diagnostic = knn.Predict(diagnostic);
+                if (SelectedPatient.Diagnostic)
+                {
+                    DiagnosticMessage = "Résultat : Présence de Maladie";
+                }
+                else
+                {
+                    DiagnosticMessage = "Résultat : Absence de Maladie";
+                }
+            }, () => KnnReady);
         }
     }
 }

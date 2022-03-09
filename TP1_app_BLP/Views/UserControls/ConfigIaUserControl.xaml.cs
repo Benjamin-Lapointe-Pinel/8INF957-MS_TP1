@@ -27,7 +27,7 @@ namespace TP1_app_BLP.Views.UserControls
         // https://stackoverflow.com/questions/1268552/how-do-i-get-a-textbox-to-only-accept-numeric-input-in-wpf
         private void TextBoxK_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
+            Regex regex = new Regex("[^0-9]+$");
             e.Handled = regex.IsMatch(e.Text);
         }
     }
