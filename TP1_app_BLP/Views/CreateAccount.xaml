@@ -19,7 +19,7 @@
                 IsDefault="true"
                 Command="{Binding ValidateDoctorAndCloseWindow}"
                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-            <Button Content="Quitter" FontSize="22" Margin="10"  Height="41" Width="379" IsCancel="true" />
+            <Button Content="Quitter" FontSize="22" Margin="10"  Height="41" Width="379" IsCancel="true" Click="Button_Click" />
         </StackPanel>
     </StackPanel>
 </Window>

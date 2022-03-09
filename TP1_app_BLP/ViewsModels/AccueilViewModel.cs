@@ -20,22 +20,23 @@ namespace TP1_app_BLP.ViewsModels
     {
         public List<string> Distances { get; private set; } = new()
         {
-            "Manhattan",
-            "Euclidienne"
+            "Euclidienne",
+            "Manhattan"
+            
         };
         public List<string> TypesDouleurThoracique { get; set; } = new()
         {
-            "angine typique",
-            "angine atypique",
-            "douleur non angineuse",
-            "asymptomatique"
+            "Angine typique",
+            "Angine atypique",
+            "Douleur non angineuse",
+            "Asymptomatique"
         };
         public int SelectedTypesDouleurThoracique { get; set; } = 0;
         public List<string> Thalassemie { get; set; } = new()
         {
-            "normale",
-            "défaut corrigé",
-            "défaut réversible"
+            "Normale",
+            "Défaut corrigé",
+            "Défaut réversible"
         };
         public int SelectedThalassemie { get; set; } = 0;
         public float OldPeak { get; set; } = 0;

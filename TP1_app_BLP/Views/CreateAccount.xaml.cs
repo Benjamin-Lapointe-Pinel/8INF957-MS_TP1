@@ -25,5 +25,7 @@ namespace TP1_app_BLP.Views
             DataContext = doctorEditorViewModel;
             InitializeComponent();
         }
+
+        
     }
 }

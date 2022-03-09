@@ -23,7 +23,7 @@
                 ItemsSource="{Binding Patients}"
                 SelectedItem="{Binding SelectedPatient}"
         />
-            <Button Content="informations" Command="{Binding InfoPatient}" 
+            <Button Content="Informations" Command="{Binding InfoPatient}" 
                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
                    Margin="10 0 0 0" FontSize="20" Height="40" Width="220"/>
             <Button Content="Ajouter un patient" Command="{Binding ComptePatient}" Margin="10" FontSize="20" Height="40" Width="211"/>
@@ -37,23 +37,24 @@
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="3" Width="780">
-            <Label Content="Thalassémie" FontSize="20" Height="40" Width="148" Margin="40 0 130 0" />
+            <Label Content="Thalassémie" FontSize="20" Height="40" Width="145" Margin="40 0 130 0" />
             <ComboBox FontSize="20" Height="40" Width="430"
                       ItemsSource="{Binding Thalassemie}" SelectedIndex="{Binding SelectedThalassemie}"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="4" Width="780">
 
-            <Label FontSize="20" Height="40" Margin="40 0 55 0" Width="523" HorizontalContentAlignment="Center"
+            <Label FontSize="20" Height="40" Margin="40 0 55 0" Width="515" HorizontalContentAlignment="Center"
                    Content="Dépression ST induite par l'exercice par rapport au repos"/>
-            <TextBox TextWrapping="Wrap" Text="0" FontSize="20" Height="40" Margin="10" Width="120"
+            <TextBox TextWrapping="Wrap" Text="0" FontSize="20" Height="40" Margin="10" Width="130"
                      PreviewTextInput="TextBoxOldPeak_PreviewTextInput"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="5" Width="780">
-            <Label FontSize="20" Height="40" Margin="40 0 55 0" Width="527"
+            <Label FontSize="20" Height="40" Margin="40 0 55 0" Width="515"
                    Content="Nombre de gros vaisseaux colorés par fluoroscopie"/>
-            <TextBox Margin="10" TextWrapping="Wrap" FontSize="20" Height="40" Width="118"
+            <TextBox Margin="10" TextWrapping="Wrap" FontSize="20" Height="40" Width="130" 
+                     
                      Text="{Binding Fluoroscopie}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="6" Width="780">

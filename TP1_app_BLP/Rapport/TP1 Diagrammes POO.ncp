@@ -7,63 +7,226 @@
       <Entity type="Class">
         <Name>Patient</Name>
         <Access>Public</Access>
-        <Location left="53" top="49" />
+        <Location left="462" top="382" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private string nom</Member>
-        <Member type="Field">private string prenom</Member>
-        <Member type="Field">private int dateNaissance</Member>
-        <Member type="Field">protected bool genre</Member>
-        <Member type="Field">private bool diagnostique</Member>
+        <Member type="Field">public bool diagnostic</Member>
+        <Member type="Constructor">public Patient()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Medecin</Name>
+        <Name>Doctor</Name>
         <Access>Public</Access>
-        <Location left="53" top="394" />
+        <Location left="783" top="382" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">public string nom</Member>
-        <Member type="Field">public string prenom</Member>
-        <Member type="Field">int dateNaissance</Member>
-        <Member type="Field">bool genre</Member>
-        <Member type="Field">int dateEntreeF</Member>
-        <Member type="Field">string email</Member>
-        <Member type="Field">string description</Member>
+        <Member type="Field">public Date dateEntrée</Member>
+        <Member type="Field">public string email</Member>
+        <Member type="Constructor">public Doctor()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Diagnostique</Name>
+        <Name>Diagnostic</Name>
         <Access>Public</Access>
-        <Location left="481" top="394" />
+        <Location left="145" top="382" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">protected string typeDouleurThoracique</Member>
-        <Member type="Field">string thalassemie</Member>
-        <Member type="Field">int depressionST</Member>
-        <Member type="Field">int nbreGVcF</Member>
+        <Member type="Field">public float Features</Member>
+        <Member type="Field">public bool Label</Member>
+        <Member type="Constructor">public Diagnostic()</Member>
+        <Member type="Method">public void PrintInfo()</Member>
+        <Member type="Method">public override string ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Person</Name>
+        <Access>Public</Access>
+        <Location left="613" top="24" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public String FirstName</Member>
+        <Member type="Field">public String LastName</Member>
+        <Member type="Field">public Date Birthdate</Member>
+        <Member type="Field">public GenderEnum Gender</Member>
+        <Member type="Field">public String City</Member>
+        <Member type="Constructor">public Person()</Member>
+        <Member type="Method">public override string ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IDiagnostic</Name>
+        <Access>Public</Access>
+        <Location left="145" top="36" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void PrintInfo()</Member>
+        <Member type="Property">float Feautres { get; set; }</Member>
+        <Member type="Property">int Label { get; set; }</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>KNN</Name>
+        <Access>Public</Access>
+        <Location left="1191" top="300" />
+        <Size width="209" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int k</Member>
+        <Member type="Field">private float DistanceFonction</Member>
+        <Member type="Field">private List&lt;Diagnostic&gt; heartDiagnostics</Member>
+        <Member type="Field">public bool HasBeenTrained</Member>
+        <Member type="Method">public void Train()</Member>
+        <Member type="Method">public float Evaluate()</Member>
+        <Member type="Method">public bool Predict()</Member>
+        <Member type="Method">public List&lt;Diagnostic&gt; ImportSamples()</Member>
+        <Member type="Method">public float ManhattanDistance()</Member>
+        <Member type="Method">public float EuclideanDistance()</Member>
+        <Member type="Method">public bool Vote()</Member>
+        <Member type="Method">public void ShellSort()</Member>
+        <Member type="Method">public void ConfusionMatrix()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IKNN</Name>
+        <Access>Public</Access>
+        <Location left="1191" top="24" />
+        <Size width="198" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void Train()</Member>
+        <Member type="Method">float Evaluate()</Member>
+        <Member type="Method">bool Predict()</Member>
+        <Member type="Method">List&lt;Diagnostic&gt; ImportSamples()</Member>
+        <Member type="Method">float ManhattanDistance()</Member>
+        <Member type="Method">float EuclideanDistance()</Member>
+        <Member type="Method">bool Vote()</Member>
+        <Member type="Method">void ShellSort()</Member>
+        <Member type="Method">void ConfusionMatrix()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>AccueilViewModel</Name>
+        <Access>Public</Access>
+        <Location left="982" top="654" />
+        <Size width="242" height="553" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public List&lt;String&gt; Distances</Member>
+        <Member type="Field">public List&lt;String&gt; TypesDouleurThoracique</Member>
+        <Member type="Field">public int SelectedTypesDouleurThoracique</Member>
+        <Member type="Field">public int SelectedThalassemie</Member>
+        <Member type="Field">public float OldPeak</Member>
+        <Member type="Field">public int Fluoroscopie</Member>
+        <Member type="Field">public ObsCollection&lt;Patients&gt; Patients</Member>
+        <Member type="Field">public Patient SelectedPatient</Member>
+        <Member type="Field">private String trainFile</Member>
+        <Member type="Field">private String testFile</Member>
+        <Member type="Field">private IKNN knn</Member>
+        <Member type="Field">public Doctor backupDoctor</Member>
+        <Member type="Field">private bool KnnReady</Member>
+        <Member type="Field">public int Distance</Member>
+        <Member type="Field">public int K</Member>
+        <Member type="Field">private bool configIaFormIsValid</Member>
+        <Member type="Field">public String SuccessRateMessage</Member>
+        <Member type="Field">public String Greeting</Member>
+        <Member type="Field">public String DiagnosticMessage</Member>
+        <Member type="Field">public Icommand ModifyDoctor</Member>
+        <Member type="Field">public Icommand CancelDoctor</Member>
+        <Member type="Field">public Icommand TrainCommand</Member>
+        <Member type="Field">public Icommand TestCommand</Member>
+        <Member type="Field">public Icommand EvaluateCommand</Member>
+        <Member type="Field">public Icommand Diagnose</Member>
+        <Member type="Field">public Icommand InfoPatient</Member>
+        <Member type="Field">public Icommand ComptePatient</Member>
+        <Member type="Method">public void NewMethod()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConnexionViewModel</Name>
+        <Access>Public</Access>
+        <Location left="1316" top="654" />
+        <Size width="212" height="553" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public ObsCollection&lt;Doctor&gt; Doctors</Member>
+        <Member type="Field">public Doctor SelectedDoctor</Member>
+        <Member type="Field">public Icommand Connect</Member>
+        <Member type="Field">public Icommand CreateAccount</Member>
+        <Member type="Constructor">public ConnexionViewModel()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DoctorEditorViewModel</Name>
+        <Access>Public</Access>
+        <Location left="546" top="951" />
+        <Size width="248" height="256" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public List&lt;String&gt; Cities</Member>
+        <Member type="Field">public bool IsReadOnly</Member>
+        <Member type="Field">public bool IsEnabled</Member>
+        <Member type="Field">private Doctor _doctor</Member>
+        <Member type="Field">public Doctor Doctor</Member>
+        <Member type="Field">public Icommand ValidateDoctorAndCloseWindow</Member>
+        <Member type="Constructor">public DoctorEditorViewModel()</Member>
+        <Member type="Method">protected void OnPropertyChanged()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PatientViewModel</Name>
+        <Access>Public</Access>
+        <Location left="280" top="951" />
+        <Size width="247" height="256" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public List&lt;String&gt; Villes</Member>
+        <Member type="Field">public String Title</Member>
+        <Member type="Field">public String DiagnosticMessage</Member>
+        <Member type="Field">public bool IsReadOnly</Member>
+        <Member type="Field">public bool IsEnabled</Member>
+        <Member type="Field">private Patient _patient</Member>
+        <Member type="Field">public Patient Patient</Member>
+        <Member type="Field">public Icommand ValidatePatientAndCloseWindow</Member>
+        <Member type="Constructor">public PatientViewModel()</Member>
+        <Member type="Method">protected void OnPropertyChanged()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>INotifyPropertyChanged</Name>
+        <Access>Public</Access>
+        <Location left="437" top="654" />
+        <Size width="187" height="150" />
+        <Collapsed>False</Collapsed>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
     <Containers />
     <Relationships>
-      <Relationship type="Association" first="0" second="2">
+      <Relationship type="Generalization" first="10" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="9" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="9">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="5" second="6">
         <Label>
         </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>156</X>
-          <Y>290</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-        <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>0..*</EndMultiplicity>
       </Relationship>
-      <Relationship type="Association" first="1" second="2">
+      <Relationship type="Generalization" first="1" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="0" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="2" second="4">
         <Label>
         </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="0" second="2">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -71,9 +234,31 @@
         <StartMultiplicity>1</StartMultiplicity>
         <EndMultiplicity>0..*</EndMultiplicity>
       </Relationship>
+      <Relationship type="Association" first="1" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>690</X>
+          <Y>630</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>380</X>
+          <Y>528</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
       <Relationship type="Association" first="1" second="0">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>657</X>
+          <Y>448</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
