@@ -20,9 +20,9 @@ namespace TP1_app_BLP.Views
     public partial class ComptePatient : Window
     {
         public PatientViewModel patientViewModel { get; private set; }
-        public ComptePatient(Patient? patient = null)
+        public ComptePatient(Patient? patient = null, bool readOnly = false)
         {
-            patientViewModel = new PatientViewModel(patient ?? new Patient());
+            patientViewModel = new PatientViewModel(patient ?? new Patient(), readOnly);
             DataContext = patientViewModel;
             InitializeComponent();
         }

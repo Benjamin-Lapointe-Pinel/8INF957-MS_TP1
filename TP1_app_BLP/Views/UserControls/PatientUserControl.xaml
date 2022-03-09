@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:TP1_app_BLP.Views.UserControls"
              xmlns:converters="clr-namespace:TP1_app_BLP.ViewsModels.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="400" d:DesignWidth="800">
     <UserControl.Resources>
         <converters:DateConverter x:Key="DateConverter" />
         <converters:ManConverter x:Key="ManConverter" />
@@ -14,7 +14,6 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions >
-            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -30,7 +29,7 @@
                 FontSize="22"
                 Height="41"
                 Width="233"
-                IsReadOnly="{Binding xxx}"
+                IsReadOnly="{Binding IsReadOnly}"
                 Text="{Binding Patient.LastName, UpdateSourceTrigger=PropertyChanged }"/>
             <Label Content="Prenom" FontSize="22" Height="41" Width="100" Margin="15"/>
             <TextBox
@@ -38,7 +37,7 @@
                 FontSize="22"
                 Height="41"
                 Width="260"
-                IsReadOnly="{Binding yyyy}"
+                IsReadOnly="{Binding IsReadOnly}"
                 Text="{Binding Patient.FirstName, UpdateSourceTrigger=PropertyChanged }"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Margin="0,65,0,0" Grid.RowSpan="2" Width="780"  >
@@ -48,7 +47,7 @@
                 Height="41"
                 Width="375"
                 IsEnabled="{Binding IsEnabled}"
-                SelectedDate="{Binding Doctor.Birthdate, Converter={StaticResource DateConverter}, UpdateSourceTrigger=PropertyChanged }"/>
+                SelectedDate="{Binding Patient.Birthdate, Converter={StaticResource DateConverter}, UpdateSourceTrigger=PropertyChanged }"/>
         </StackPanel>
 
 
@@ -83,20 +82,7 @@
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="4" Margin="0,0,0,65" Grid.RowSpan="2" Width="780" >
             <Label Content="Dernier diagnostique" Margin="10" FontSize="22" Height="41" Width="354"/>
-            <Label Content="Présence / Absence de maladie" Margin="10" FontSize="22" Height="41" Width="354"/>
+            <Label Margin="10" FontSize="22" Height="41" Width="354" Content="{Binding DiagnosticMessage}"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal" Grid.Column="0" Grid.Row="5" Grid.RowSpan="2" >
-            <Button
-                Content="Créer"
-                Margin="10"
-                FontSize="22"
-                Height="41"
-                Width="308"
-                IsDefault="true"
-                Command="{Binding ValidateDoctorAndCloseWindow}"
-                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-            <Button Content="Quitter" FontSize="22" Margin="10"  Height="41" Width="379" IsCancel="true" />
-        </StackPanel>
-
     </Grid>
 </UserControl>

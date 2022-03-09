@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace TP1_app_BLP.Views.UserControls
 {
-    /// <summary>
-    /// Interaction logic for PatientUserControl.xaml
-    /// </summary>
     public partial class PatientUserControl : UserControl
     {
         public PatientUserControl()

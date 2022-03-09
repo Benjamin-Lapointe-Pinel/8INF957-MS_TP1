@@ -50,8 +50,14 @@ namespace TP1_app_BLP.ViewsModels
             IsReadOnly = isReadOnly;
 
             ValidateDoctorAndCloseWindow = new RelayCommand<Window>(
-                window => window.DialogResult = true,
-                window => Doctor.IsValid);
+                window =>
+                {
+                    window.DialogResult = true;
+                },
+                window =>
+                {
+                    return Doctor.IsValid;
+                });
         }
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")

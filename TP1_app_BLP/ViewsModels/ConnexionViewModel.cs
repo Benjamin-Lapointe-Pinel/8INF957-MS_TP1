@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +15,19 @@ namespace TP1_app_BLP.ViewsModels
 {
     public class ConnexionViewModel
     {
-        public List<Doctor> Doctors { get; private set; } = new List<Doctor>();
+        public ObservableCollection<Doctor> Doctors { get; private set; }
         public Doctor SelectedDoctor { get; set; }
         public ICommand Connect { get; private set; }
         public ICommand CreateAccount { get; private set; }
 
-        public ConnexionViewModel(IEnumerable<Doctor> doctors)
+        public ConnexionViewModel()
         {
-            Doctors.AddRange(doctors);
+            Doctors = new()
+            {
+                new("Benjamin", "Lapointe", new(1995, 11, 13), Person.GenderEnum.Man, "Rimouski", new DateOnly(), "lapb0010@uqar.ca"),
+                new("Mamadou", "Diallo", new(1994, 09, 3), Person.GenderEnum.Man, "Lévis", new DateOnly(), "Mamadou.mous@uqar.ca"),
+                new("Bhas", "Fatemeh", new(1997, 09, 3), Person.GenderEnum.Woman, "Quebec", new DateOnly(), "Fatemah.Bashar@uqar.ca")
+            };
             SelectedDoctor = Doctors[0];
 
             Connect = new RelayCommand<Window>(window =>

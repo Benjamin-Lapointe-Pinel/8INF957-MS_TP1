@@ -5,14 +5,25 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TP1_app_BLP.Views"
       xmlns:usercontrols="clr-namespace:TP1_app_BLP.Views.UserControls"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Ajouter un patient" Height="550" Width="800">
-
-    <Grid>
-       
-            <usercontrols:PatientUserControl/>
-       
-        
-    </Grid>
+      mc:Ignorable="d"
+      Title="{Binding Title}" Height="500" Width="800">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    <StackPanel>
+        <usercontrols:PatientUserControl/>
+        <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal" Grid.Column="0" Grid.Row="5" Grid.RowSpan="2"
+                    Visibility="{Binding IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Button
+                Content="Créer"
+                Margin="10"
+                FontSize="22"
+                Height="41"
+                Width="308"
+                IsDefault="true"
+                Command="{Binding ValidatePatientAndCloseWindow}"
+                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
+            <Button Content="Quitter" FontSize="22" Margin="10"  Height="41" Width="379" IsCancel="true" />
+        </StackPanel>
+    </StackPanel>
 </Window>

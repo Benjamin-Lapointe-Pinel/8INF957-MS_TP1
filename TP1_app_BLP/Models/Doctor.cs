@@ -10,18 +10,13 @@ namespace TP01_HeartDiseaseDiagnostic
     {
         public DateOnly DateEntryOffice { get; set; }
         public string Email { get; set; }
-        public string City { get; set; }
-        public override bool IsValid =>
-            base.IsValid &&
-            !string.IsNullOrWhiteSpace(Email) &&
-            !string.IsNullOrWhiteSpace(City);
+        public override bool IsValid => base.IsValid && !string.IsNullOrWhiteSpace(Email);
 
-        public Doctor(string firstName, string lastName, DateOnly birthdate, GenderEnum gender, DateOnly dateEntryOffice, string email, string city)
-            : base(firstName, lastName, birthdate, gender)
+        public Doctor(string firstName, string lastName, DateOnly birthdate, GenderEnum gender, string city, DateOnly dateEntryOffice, string email)
+            : base(firstName, lastName, birthdate, gender, city)
         {
             DateEntryOffice = dateEntryOffice;
             Email = email;
-            City = city;
         }
 
         public Doctor() : base()
@@ -32,7 +27,7 @@ namespace TP01_HeartDiseaseDiagnostic
         }
 
         public Doctor(Doctor doctor)
-            : this(doctor.FirstName, doctor.LastName, doctor.Birthdate, doctor.Gender, doctor.DateEntryOffice, doctor.Email, doctor.City)
+            : this(doctor.FirstName, doctor.LastName, doctor.Birthdate, doctor.Gender, doctor.City, doctor.DateEntryOffice, doctor.Email)
         { }
     }
 }

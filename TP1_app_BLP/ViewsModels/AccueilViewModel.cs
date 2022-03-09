@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -39,7 +40,7 @@ namespace TP1_app_BLP.ViewsModels
         public int SelectedThalassemie { get; set; } = 0;
         public float OldPeak { get; set; } = 0;
         public int Fluoroscopie { get; set; } = 0;
-        public List<Patient> Patients { get; private set; }
+        public ObservableCollection<Patient> Patients { get; private set; }
         public Patient SelectedPatient { get; set; }
         private string trainFile;
         private string testFile;
@@ -95,9 +96,9 @@ namespace TP1_app_BLP.ViewsModels
 
             Patients = new()
             {
-                new("Benjamin", "Lapointe", new(1995, 11, 13), Person.GenderEnum.Man),
-                new("Mamadou", "Diallo", new(1994, 09, 3), Person.GenderEnum.Man),
-                new("Bhas", "Fatemeh", new(1997, 09, 3), Person.GenderEnum.Woman)
+                new("Benjamin", "Lapointe", new(1995, 11, 13), Person.GenderEnum.Man, "Rimouski"),
+                new("Mamadou", "Diallo", new(1994, 09, 3), Person.GenderEnum.Man, "Lévis"),
+                new("Bhas", "Fatemeh", new(1997, 09, 3), Person.GenderEnum.Woman, "Québec")
             };
             SelectedPatient = Patients[0];
 
@@ -137,12 +138,10 @@ namespace TP1_app_BLP.ViewsModels
                     Patients.Add(comptePatient.patientViewModel.Patient);
                 }
             });
-            InfoPatient = new RelayCommand<Window>(window =>
+            InfoPatient = new RelayCommand(() =>
             {
-                var infoPatient = new ComptePatient(SelectedPatient);
+                var infoPatient = new ComptePatient(SelectedPatient, true);
                 infoPatient.Show();
-
-
             });
             Diagnose = new RelayCommand(() =>
             {
