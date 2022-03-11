@@ -26,7 +26,7 @@ namespace TP1_app_BLP.ViewsModels
             {
                 new("Benjamin", "Lapointe", new(1995, 11, 13), Person.GenderEnum.Man, "Rimouski", new DateOnly(), "lapb0010@uqar.ca"),
                 new("Mamadou", "Diallo", new(1994, 09, 3), Person.GenderEnum.Man, "Lévis", new DateOnly(), "Mamadou.mous@uqar.ca"),
-                new("Bhas", "Fatemeh", new(1997, 09, 3), Person.GenderEnum.Woman, "Quebec", new DateOnly(), "Fatemah.Bashar@uqar.ca")
+                new("Bashar", "Fatemeh", new(1997, 09, 3), Person.GenderEnum.Woman, "Quebec", new DateOnly(), "Fatemah.bashar@uqar.ca")
             };
             SelectedDoctor = Doctors[0];
 

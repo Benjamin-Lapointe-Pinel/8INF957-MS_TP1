@@ -26,5 +26,7 @@ namespace TP1_app_BLP.Views
             DataContext = accueilViewModel;
             InitializeComponent();
         }
+
+        
     }
 }

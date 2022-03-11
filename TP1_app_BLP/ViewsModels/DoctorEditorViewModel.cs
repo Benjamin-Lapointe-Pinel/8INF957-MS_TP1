@@ -48,8 +48,9 @@ namespace TP1_app_BLP.ViewsModels
         {
             Doctor = doctor;
             IsReadOnly = isReadOnly;
+           
 
-            ValidateDoctorAndCloseWindow = new RelayCommand<Window>(
+        ValidateDoctorAndCloseWindow = new RelayCommand<Window>(
                 window =>
                 {
                     window.DialogResult = true;

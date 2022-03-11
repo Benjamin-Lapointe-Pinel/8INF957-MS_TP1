@@ -13,7 +13,7 @@
                 <usercontrols:DoctorUserControl/>
                 <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal" >
                     <Button Content="Modifier" Margin="10" FontSize="22" Height="41"  Width="308"
-                            Command="{Binding ModifyDoctor}"/>
+                            Command="{Binding ModifyDoctor}" />
                     <Button Content="Annuler" FontSize="22" Margin="10" Height="41" Width="379"
                             Command="{Binding CancelDoctor}"/>
                 </StackPanel>

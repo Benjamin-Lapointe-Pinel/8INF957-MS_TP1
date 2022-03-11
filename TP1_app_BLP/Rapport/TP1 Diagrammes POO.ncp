@@ -7,7 +7,7 @@
       <Entity type="Class">
         <Name>Patient</Name>
         <Access>Public</Access>
-        <Location left="462" top="382" />
+        <Location left="572" top="590" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public bool diagnostic</Member>
@@ -17,7 +17,7 @@
       <Entity type="Class">
         <Name>Doctor</Name>
         <Access>Public</Access>
-        <Location left="783" top="382" />
+        <Location left="893" top="590" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public Date dateEntrée</Member>
@@ -28,7 +28,7 @@
       <Entity type="Class">
         <Name>Diagnostic</Name>
         <Access>Public</Access>
-        <Location left="145" top="382" />
+        <Location left="255" top="590" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public float Features</Member>
@@ -41,7 +41,7 @@
       <Entity type="Class">
         <Name>Person</Name>
         <Access>Public</Access>
-        <Location left="613" top="24" />
+        <Location left="723" top="232" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public String FirstName</Member>
@@ -56,7 +56,7 @@
       <Entity type="Interface">
         <Name>IDiagnostic</Name>
         <Access>Public</Access>
-        <Location left="145" top="36" />
+        <Location left="255" top="244" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Method">void PrintInfo()</Member>
@@ -66,7 +66,7 @@
       <Entity type="Class">
         <Name>KNN</Name>
         <Access>Public</Access>
-        <Location left="1191" top="300" />
+        <Location left="1301" top="508" />
         <Size width="209" height="298" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int k</Member>
@@ -87,7 +87,7 @@
       <Entity type="Interface">
         <Name>IKNN</Name>
         <Access>Public</Access>
-        <Location left="1191" top="24" />
+        <Location left="1301" top="232" />
         <Size width="198" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Method">void Train()</Member>
@@ -103,7 +103,7 @@
       <Entity type="Class">
         <Name>AccueilViewModel</Name>
         <Access>Public</Access>
-        <Location left="982" top="654" />
+        <Location left="1079" top="905" />
         <Size width="242" height="553" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public List&lt;String&gt; Distances</Member>
@@ -139,7 +139,7 @@
       <Entity type="Class">
         <Name>ConnexionViewModel</Name>
         <Access>Public</Access>
-        <Location left="1316" top="654" />
+        <Location left="1476" top="905" />
         <Size width="212" height="553" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public ObsCollection&lt;Doctor&gt; Doctors</Member>
@@ -152,7 +152,7 @@
       <Entity type="Class">
         <Name>DoctorEditorViewModel</Name>
         <Access>Public</Access>
-        <Location left="546" top="951" />
+        <Location left="648" top="1202" />
         <Size width="248" height="256" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public List&lt;String&gt; Cities</Member>
@@ -168,7 +168,7 @@
       <Entity type="Class">
         <Name>PatientViewModel</Name>
         <Access>Public</Access>
-        <Location left="280" top="951" />
+        <Location left="382" top="1202" />
         <Size width="247" height="256" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public List&lt;String&gt; Villes</Member>
@@ -186,10 +186,15 @@
       <Entity type="Class">
         <Name>INotifyPropertyChanged</Name>
         <Access>Public</Access>
-        <Location left="437" top="654" />
+        <Location left="547" top="905" />
         <Size width="187" height="150" />
         <Collapsed>False</Collapsed>
         <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>Diagramme de classe pour notre Application destinée aux médecins</Text>
+        <Location left="704" top="42" />
+        <Size width="383" height="75" />
       </Entity>
     </Entities>
     <Containers />
@@ -229,6 +234,14 @@
       <Relationship type="Association" first="0" second="2">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>535</X>
+          <Y>697</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>450</X>
+          <Y>697</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartMultiplicity>1</StartMultiplicity>
@@ -238,12 +251,12 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>690</X>
-          <Y>630</Y>
+          <X>800</X>
+          <Y>838</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>380</X>
-          <Y>528</Y>
+          <X>490</X>
+          <Y>736</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -256,9 +269,53 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>657</X>
-          <Y>448</Y>
+          <X>767</X>
+          <Y>656</Y>
         </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="5" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1364</X>
+          <Y>483</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>376</X>
+          <Y>554</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="8" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="7" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="7" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="7" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="8" second="7">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
