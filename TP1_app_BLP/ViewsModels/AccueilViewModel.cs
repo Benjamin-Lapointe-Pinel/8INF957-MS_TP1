@@ -47,7 +47,9 @@ namespace TP1_app_BLP.ViewsModels
         private string testFile;
         private Doctor backupDoctor;
         private IKNN knn;
-        private bool KnnReady => knn != null;
+        private bool diagnoseReady => knn != null &&
+            OldPeak >= 0 && OldPeak <= 6.2 &&
+            Fluoroscopie >= 0 && Fluoroscopie <= 3;
         public int K { get; set; } = 1;
         public int Distance { get; set; }
         private bool configIaFormIsValid =>
@@ -156,7 +158,7 @@ namespace TP1_app_BLP.ViewsModels
                 {
                     DiagnosticMessage = "Résultat : Absence de Maladie";
                 }
-            }, () => KnnReady);
+            }, () => diagnoseReady);
         }
     }
 }
